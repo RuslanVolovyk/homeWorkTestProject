@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 //  Клас- коллекцию из 4 объектов с ключами и методами
-public class Set {
+public class SetOfItems {
 
     // метод, что делает объект HashMap ключ - код, значение - объекты Item
     public static HashMap<String, Item> makeSet() {
@@ -20,12 +20,12 @@ public class Set {
 
     // метод, что проверяет наличие елемента по введенному ключу в коллекции
     public static boolean isInSet(String keyCheck) {
-        return Set.makeSet().containsKey(keyCheck);
+        return SetOfItems.makeSet().containsKey(keyCheck);
     }
 
     // метод, что возвращает цену елемента с заданным кодом
     public static int getPrice(String keyCheck) {
-        return Set.makeSet().get(keyCheck).getPrice();
+        return SetOfItems.makeSet().get(keyCheck).getPrice();
     }
 
 }

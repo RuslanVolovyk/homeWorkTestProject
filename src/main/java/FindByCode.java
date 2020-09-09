@@ -25,8 +25,8 @@ public class FindByCode {
         }
 
 
-        if (Set.isInSet(newInput))
-            System.out.println("Вы ввели " + newInput + ", его цена : " + Set.getPrice(newInput));
+        if (SetOfItems.isInSet(newInput))
+            System.out.println("Вы ввели " + newInput + ", его цена : " + SetOfItems.getPrice(newInput));
         else
             System.out.println("Упсс... не найдено " + newInput);
 
