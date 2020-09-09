@@ -1,12 +1,27 @@
 
-// клас для функции
+// главниый клас, что запрашивает ввод числа и вызывает функцию
 
-// Функция нахождения факториала через рекуасию
+import java.util.Scanner;
+
 public class Factorial {
-
-    public static long getNumber(int position){
+    public long getFuctorialNumber(int position) {
         if (position <= 1)
             return 1;
-        return  position * getNumber(position-1);
+        return position * getFuctorialNumber(position - 1);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner myscan = new Scanner(System.in); // Create a Scanner object
+
+        System.out.print("Введите число для высчитывания его факториала: ");
+
+        int number = myscan.nextInt();
+
+        Factorial anFactorialObject = new Factorial();
+
+        System.out.println("Факториал числа " + number + " = " + anFactorialObject.getFuctorialNumber(number));
+
+
     }
 }
