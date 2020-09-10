@@ -23,20 +23,17 @@ class SimpleClass1 {
 // Класс2 наследник класса1
 class SimpleClass2 extends SimpleClass1 {
 
-    //    Вызов методов класса предка
-    @Override
-    public void publicMethod() {
-        super.publicMethod();
+//    Вызов методов класса предка
+    public  void demoMethod(){
+      publicStatic();
+      publicMethod();
     }
 
-    @Override
-    protected void protectedMethod() {
-        super.protectedMethod();
-    }
 
     //    Паблик статик метод
     public static void publicStatic() {
         System.out.println("I am public static method from " + SimpleClass2.class.getName());
+        publicStatic();
 
     }
 
