@@ -1,3 +1,5 @@
+package java_test_tasks;
+
 public interface Animal {
 
     void height();
@@ -56,22 +58,22 @@ class Dog implements Animal {
 
     @Override
     public void height() {
-        System.out.println("Dog " + movement);
+        System.out.println("java_test_tasks.Dog " + movement);
     }
 
     @Override
     public void weight() {
-        System.out.println("Dog " + movement);
+        System.out.println("java_test_tasks.Dog " + movement);
     }
 
     @Override
     public void movement() {
-        System.out.println("Dog " + movement);
+        System.out.println("java_test_tasks.Dog " + movement);
 
     }
 
     @Override
     public void eating() {
-        System.out.println("Dog " + eating);
+        System.out.println("java_test_tasks.Dog " + eating);
     }
 }

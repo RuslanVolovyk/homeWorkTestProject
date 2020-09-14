@@ -1,3 +1,5 @@
+package java_test_tasks;
+
 public class MultyThreads extends Thread {
 
     //  метод для многопоточной генерации

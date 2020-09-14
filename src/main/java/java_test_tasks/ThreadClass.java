@@ -1,3 +1,5 @@
+package java_test_tasks;
+
 public class ThreadClass extends Thread {
 
     //  синхронизированый метод который будет использоватся в 2 разных потоках

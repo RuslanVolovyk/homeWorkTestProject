@@ -1,4 +1,4 @@
-import java.util.Objects;
+package java_test_tasks;
 
 
 // Создаем клас ТЕСТ

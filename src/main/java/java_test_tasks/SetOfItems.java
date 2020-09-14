@@ -1,9 +1,11 @@
+package java_test_tasks;
+
 import java.util.HashMap;
 
 //  Клас- коллекцию из 4 объектов с ключами и методами
 public class SetOfItems {
 
-    // метод, что делает объект HashMap ключ - код, значение - объекты Item
+    // метод, что делает объект HashMap ключ - код, значение - объекты java_test_tasks.Item
     public static HashMap<String, Item> makeSet() {
 
         // создаем объект HashMap

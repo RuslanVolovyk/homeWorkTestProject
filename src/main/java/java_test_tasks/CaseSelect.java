@@ -1,3 +1,5 @@
+package java_test_tasks;
+
 import java.io.*;
 
 public class CaseSelect {

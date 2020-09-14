@@ -1,4 +1,4 @@
-package oopPackage;
+package java_test_tasks.oopPackage;
 
 // Класс1 - предок для класса2
 class SimpleClass1 {

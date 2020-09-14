@@ -1,3 +1,5 @@
+package java_test_tasks;
+
 public class Constructor {
 
     //  дефолтный коструктор в котором будет выводится имя класса

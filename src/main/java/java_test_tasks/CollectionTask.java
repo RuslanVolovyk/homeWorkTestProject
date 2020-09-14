@@ -1,3 +1,5 @@
+package java_test_tasks;
+
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -9,7 +11,7 @@ public class CollectionTask {
         HashMap<String, String> animalSound = new HashMap<>();
 
 //  добавляем 3 элемента в созданный HashMap с названием animalSound
-        animalSound.put("Dog", "gav-gav");
+        animalSound.put("java_test_tasks.Dog", "gav-gav");
         animalSound.put("Cat", "meow-meow");
         animalSound.put("Rooster", "Cocka-doodle-doo");
 

@@ -1,4 +1,4 @@
-
+package java_test_tasks;
 // главниый клас, что запрашивает ввод числа и вызывает функцию
 
 import java.util.Scanner;
