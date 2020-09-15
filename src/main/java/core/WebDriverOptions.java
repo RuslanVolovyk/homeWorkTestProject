@@ -1,11 +1,14 @@
 package core;
 
 
+import org.openqa.selenium.chrome.ChromeOptions;
+
 public class WebDriverOptions {
 
-    public static void chromeStartOption() {
-        System.setProperty("webdriver.chrome.driver", "/home/maksym/web_drivers/chromedriver");
-
+    public ChromeOptions getChromeOptions(){
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("start-maximized");
+        return chromeOptions;
     }
 
 }
