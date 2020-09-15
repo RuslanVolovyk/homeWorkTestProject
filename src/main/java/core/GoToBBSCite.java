@@ -19,9 +19,9 @@ public class GoToBBSCite {
 
         driver.get(baseURL);
 
-        driver.findElement(By.xpath("//*[@id='orb-search-q']")).sendKeys("java");
+        driver.findElement(By.xpath("//input[@id='orb-search-q']")).sendKeys("java");
 
-        driver.findElement(By.xpath("//*[@id='orb-search-button']")).click();
+        driver.findElement(By.xpath("//button[@id='orb-search-button']")).click();
 
         driver.findElement(By.cssSelector("a")).click();
         try {
