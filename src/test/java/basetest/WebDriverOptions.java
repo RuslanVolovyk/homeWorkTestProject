@@ -1,4 +1,4 @@
-package tests;
+package basetest;
 
 import org.openqa.selenium.chrome.ChromeOptions;
 
