@@ -1,110 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9c949d5-4d4e-4e13-84f0-898577132673" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="d9c949d5-4d4e-4e13-84f0-898577132673" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/GoToBBSSite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-              <folding>
-                <element signature="e#63#64#0" expanded="true" />
-                <element signature="e#99#100#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-      </list>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="1940" />
-    <option name="height" value="1040" />
+  <component name="ProjectId" id="1hUdVKMp1aXqwld8EFtIMOkuBbQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="testproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testproject" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="testproject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="testproject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1599722880763" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/web_drivers/selenium-java-3.141.59/libs/okio-1.14.0.jar" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="core" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.core in test-project">
+    <configuration name="ExceptionTack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="java_test_tasks.ExceptionTack" />
+      <module name="test-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GoToBBSSite" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.GoToBBSSite" />
+      <module name="test-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="testproject" />
@@ -112,12 +105,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SimpleClass3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="java_test_tasks.oopPackage.SimpleClass3" />
+      <module name="test-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartFirefoxSelenium" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="core.StartFirefoxSelenium" />
+      <module name="test-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in test-project" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="test-project" />
+      <useClassPathOnly />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="core in test-project" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="test-project" />
+      <useClassPathOnly />
+      <option name="PACKAGE_NAME" value="core" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StartFirefoxSelenium" />
+        <item itemvalue="Application.SimpleClass3" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GoToBBSSite" />
+        <item itemvalue="Application.ExceptionTack" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -129,53 +165,156 @@
       <option name="presentableId" value="Default" />
       <updated>1599564799179</updated>
     </task>
+    <task id="LOCAL-00001" summary="[+] added core package and made some changes into prevision folder structure.">
+      <created>1600092506039</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600092506039</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[+=] I have made some error correction, a few classes were renamed.">
+      <created>1600155447447</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1600155447447</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[=] Xpath selectors had been corrected.">
+      <created>1600161568791</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600161568791</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[=] added the extensions folder with browsers drivers.">
+      <created>1600164283266</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1600164283266</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[=] made some indent correction.">
+      <created>1600181528729</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1600181528729</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[=] made some minor correction">
+      <created>1600250059023</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1600250059023</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25033557" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3286119" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-          <folding>
-            <element signature="e#63#64#0" expanded="true" />
-            <element signature="e#99#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[+] added my implementation of the multi threads tack." />
+    <MESSAGE value="[+] added core package and made some changes into prevision folder structure." />
+    <MESSAGE value="[+=] I have made some error correction, a few classes were renamed." />
+    <MESSAGE value="[=] Xpath selectors had been corrected." />
+    <MESSAGE value="[=] added the extensions folder with browsers drivers." />
+    <MESSAGE value="[=] made some indent correction." />
+    <MESSAGE value="[=] made some minor correction" />
+    <option name="LAST_COMMIT_MESSAGE" value="[=] made some minor correction" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="443" y="131" width="1024" height="852" key="#Project_Structure" timestamp="1600175329667">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="443" y="131" width="1024" height="852" key="#Project_Structure/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600175329667" />
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600176920651">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600176920651" />
+    <state x="768" y="261" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1600088049728">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="768" y="261" width="374" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600088049728" />
+    <state x="667" y="223" width="575" height="668" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1600175023222">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="667" y="223" width="575" height="668" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600175023222" />
+    <state x="587" y="300" width="735" height="527" key="FileChooserDialogImpl" timestamp="1600082230311">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="587" y="300" width="735" height="527" key="FileChooserDialogImpl/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600082230311" />
+    <state width="1874" height="272" key="GridCell.Tab.0.bottom" timestamp="1600177728420">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1490" height="203" key="GridCell.Tab.0.bottom/0.27.1536.837@0.27.1536.837" timestamp="1600110590607" />
+    <state width="1874" height="272" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600177728420" />
+    <state width="1874" height="321" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1200@1920.0.1920.1200" timestamp="1600164891960" />
+    <state width="1874" height="272" key="GridCell.Tab.0.center" timestamp="1600177728419">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1490" height="203" key="GridCell.Tab.0.center/0.27.1536.837@0.27.1536.837" timestamp="1600110590606" />
+    <state width="1874" height="272" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600177728419" />
+    <state width="1874" height="321" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1200@1920.0.1920.1200" timestamp="1600164891960" />
+    <state width="1874" height="272" key="GridCell.Tab.0.left" timestamp="1600177728419">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1490" height="203" key="GridCell.Tab.0.left/0.27.1536.837@0.27.1536.837" timestamp="1600110590605" />
+    <state width="1874" height="272" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600177728419" />
+    <state width="1874" height="321" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1200@1920.0.1920.1200" timestamp="1600164891959" />
+    <state width="1874" height="272" key="GridCell.Tab.0.right" timestamp="1600177728419">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1490" height="203" key="GridCell.Tab.0.right/0.27.1536.837@0.27.1536.837" timestamp="1600110590606" />
+    <state width="1874" height="272" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600177728419" />
+    <state width="1874" height="321" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1200@1920.0.1920.1200" timestamp="1600164891960" />
+    <state x="304" y="104" width="924" height="696" key="Maven.ArtifactSearchDialog" timestamp="1600109552543">
+      <screen x="0" y="27" width="1536" height="837" />
+    </state>
+    <state x="304" y="104" width="924" height="696" key="Maven.ArtifactSearchDialog/0.27.1536.837@0.27.1536.837" timestamp="1600109552543" />
+    <state x="449" y="188" width="1024" height="852" key="SettingsEditor" timestamp="1600175088096">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="449" y="188" width="1022" height="737" key="SettingsEditor/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600175088096" />
+    <state x="2369" y="183" width="1024" height="852" key="SettingsEditor/0.27.1920.1053/1920.0.1920.1200@1920.0.1920.1200" timestamp="1600163169893" />
+    <state x="100" y="117" width="1336" height="642" key="ShowDiffWithBranchDialog" timestamp="1599836061582">
+      <screen x="0" y="27" width="1536" height="837" />
+    </state>
+    <state x="100" y="117" width="1336" height="642" key="ShowDiffWithBranchDialog/0.27.1536.837@0.27.1536.837" timestamp="1599836061582" />
+    <state x="2378" y="207" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1600250150391">
+      <screen x="1920" y="0" width="1920" height="1200" />
+    </state>
+    <state x="366" y="172" width="800" height="540" key="Vcs.Push.Dialog.v2/0.27.1536.837@0.27.1536.837" timestamp="1599834790706" />
+    <state x="458" y="209" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600161580908" />
+    <state x="2378" y="207" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1200@1920.0.1920.1200" timestamp="1600250150391" />
+    <state x="734" y="358" width="442" height="398" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1600177519403">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="734" y="358" width="442" height="398" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600177519403" />
+    <state x="504" y="207" width="524" height="490" key="extract.method.dialog" timestamp="1599833691163">
+      <screen x="0" y="27" width="1536" height="837" />
+    </state>
+    <state x="504" y="207" width="524" height="490" key="extract.method.dialog/0.27.1536.837@0.27.1536.837" timestamp="1599833691163" />
+    <state x="682" y="247" width="546" height="619" key="git4idea.branch.GitSmartOperationDialog" timestamp="1600094871299">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="682" y="247" width="546" height="619" key="git4idea.branch.GitSmartOperationDialog/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600094871299" />
+    <state x="650" y="300" width="610" height="514" key="refactoring.ChangeSignatureDialog" timestamp="1600088265543">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="650" y="300" width="610" height="514" key="refactoring.ChangeSignatureDialog/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600088265543" />
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600155360567">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="623" y="259" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1200@0.27.1920.1053" timestamp="1600155360567" />
   </component>
 </project>

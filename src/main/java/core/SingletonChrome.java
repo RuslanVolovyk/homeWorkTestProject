@@ -17,7 +17,7 @@ public class SingletonChrome extends WebDriverOptions {
         return driver;
     }
 
-    public static SingletonChrome startDriver() {
+    public static SingletonChrome initDriver() {
         if (instance == null)
             instance = new SingletonChrome();
         return instance;
