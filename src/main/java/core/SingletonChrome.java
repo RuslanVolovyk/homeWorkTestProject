@@ -11,7 +11,7 @@ public class SingletonChrome extends WebDriverOptions {
     private SingletonChrome() {
     }
 
-    public WebDriver openBrowser() {
+    public WebDriver getDriver() {
         System.setProperty("webdriver.chrome.driver", "web-drivers/chromedriver");
         driver = new ChromeDriver(getChromeOptions());
         return driver;
