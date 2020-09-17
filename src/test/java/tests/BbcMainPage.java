@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class bbsPageObject {
+public class BbcMainPage {
     WebDriver driver;
 
-    public bbsPageObject(WebDriver driver) {
+    public BbcMainPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
