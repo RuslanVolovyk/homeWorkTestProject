@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeClass;
 public class BaseTest {
 
     public WebDriver driver;
+    public static final String baseUrl = "https://bbc.com";
 
     @BeforeClass
     public void setUp() {
