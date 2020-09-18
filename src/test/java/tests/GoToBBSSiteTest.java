@@ -1,28 +1,41 @@
 package tests;
 
 import basetest.BaseTest;
-import org.junit.Assert;
+import com.sun.org.glassfish.gmbal.Description;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import static basetest.BbsConstants.baseUrl;
+import static basetest.BbsConstants.BASE_URL;
 
+@Listeners(ListenerITest.class)
 public class GoToBBSSiteTest extends BaseTest {
 
-    @Test
-    public void testBBSSiteElementsPresent() {
-        BbcMainPage bbsPageObject1 = new BbcMainPage(driver);
-        Assert.assertTrue(bbsPageObject1.searchTextForm.isEnabled());
-        Assert.assertTrue(bbsPageObject1.searchTextForm.isDisplayed());
+    @BeforeMethod
+    public void openSite() {
+        driver.get(BASE_URL);
     }
 
+    @Description("Checks if the search text form is enabled on the page and if the search button is displayed there.")
+    @Test
+    public void testBBSSiteElementsPresent() {
+        BbcMainPage bbsMainPageObject1 = new BbcMainPage(driver);
+        bbsMainPageObject1.searchTextFormIsDisplayed();
+        bbsMainPageObject1.searchTextFormIsEnabled();
+    }
+
+    @Description("Checks if our search  made.")
     @Test
     public void testBBSSite() {
-        driver.get(baseUrl);
         String searchWord = "dog";
-        BbcMainPage bbsPageObject2 = new BbcMainPage(driver);
+        BbcMainPage bbcMainPageObject2 = new BbcMainPage(driver);
+        BbcSearchPage bbcSearchPage1 = new BbcSearchPage(driver);
 
-        bbsPageObject2.sendTextIntoSearchTextForm(searchWord);
-        bbsPageObject2.searchButtonClick();
-        bbsPageObject2.clickOnLink();
+        bbcMainPageObject2.sendTextIntoSearchTextForm(searchWord);
+        bbcMainPageObject2.searchButtonClick();
+        bbcMainPageObject2.mainPageIsNotDisplayed();
+        bbcSearchPage1.clickOnLink();
+        bbcSearchPage1.searchPageIsNotDisplayed();
     }
 }

@@ -1,16 +1,16 @@
 package tests;
 
+import basetest.PageObjectCreator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class BbcMainPage {
-    WebDriver driver;
+import static org.testng.Assert.*;
+
+public class BbcMainPage extends PageObjectCreator {
 
     public BbcMainPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     @FindBy(xpath = "//input[@id='orb-search-q']")
@@ -19,18 +19,27 @@ public class BbcMainPage {
     @FindBy(xpath = "//button[@id='orb-search-button']")
     WebElement searchButton;
 
-    @FindBy(css = "a")
-    WebElement firstSelectorA;
-
     public void searchButtonClick() {
         searchButton.click();
+    }
+
+    public String getTitle() {
+        return super.driver.getTitle();
     }
 
     public void sendTextIntoSearchTextForm(String word) {
         searchTextForm.sendKeys(word);
     }
 
-    public void clickOnLink() {
-        firstSelectorA.click();
+    public void searchTextFormIsEnabled() {
+        assertTrue(searchTextForm.isEnabled(), "The required search text form is absent.");
+    }
+
+    public void searchTextFormIsDisplayed() {
+        assertTrue(searchTextForm.isDisplayed(), "Sorry,the search button is invisible!");
+    }
+
+    public void mainPageIsNotDisplayed() {
+        assertNotEquals(getTitle(), "BBC - Homepage", "Something come up, we are on the main page again.");
     }
 }
