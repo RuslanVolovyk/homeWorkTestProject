@@ -4,12 +4,11 @@ import basetest.BaseTest;
 import com.sun.org.glassfish.gmbal.Description;
 
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static basetest.BbsConstants.BASE_URL;
 
-@Listeners(ListenerITest.class)
+
 public class GoToBBSSiteTest extends BaseTest {
 
     @BeforeMethod
@@ -18,7 +17,7 @@ public class GoToBBSSiteTest extends BaseTest {
     }
 
     @Description("Checks if the search text form is enabled on the page and if the search button is displayed there.")
-    @Test
+    @Test(priority = 2)
     public void testBBSSiteElementsPresent() {
         BbcMainPage bbsMainPageObject1 = new BbcMainPage(driver);
         bbsMainPageObject1.searchTextFormIsDisplayed();
@@ -26,7 +25,7 @@ public class GoToBBSSiteTest extends BaseTest {
     }
 
     @Description("Checks if our search  made.")
-    @Test
+    @Test(priority = 1)
     public void testBBSSite() {
         String searchWord = "dog";
         BbcMainPage bbcMainPageObject2 = new BbcMainPage(driver);

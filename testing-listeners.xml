@@ -6,7 +6,6 @@
         <listener class-name="tests.ListenerITest"/>
     </listeners>
 
-
     <test name="Find bbs.com">
         <packages>
             <package name="tests"/>
