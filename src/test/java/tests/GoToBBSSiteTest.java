@@ -17,15 +17,15 @@ public class GoToBBSSiteTest extends BaseTest {
     }
 
     @Description("Checks if the search text form is enabled on the page and if the search button is displayed there.")
-    @Test(priority = 2)
-    public void testBBSSiteElementsPresent() {
+    @Test
+    public void testBBSSiteElementsPresent(){
         BbcMainPage bbsMainPageObject1 = new BbcMainPage(driver);
         bbsMainPageObject1.searchTextFormIsDisplayed();
         bbsMainPageObject1.searchTextFormIsEnabled();
     }
 
     @Description("Checks if our search  made.")
-    @Test(priority = 1)
+    @Test
     public void testBBSSite() {
         String searchWord = "dog";
         BbcMainPage bbcMainPageObject2 = new BbcMainPage(driver);

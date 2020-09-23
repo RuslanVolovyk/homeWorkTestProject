@@ -28,6 +28,6 @@ public class BbcSearchPage extends PageObjectCreator {
 
     @Step("checking if the search page is not displayed")
     public void searchPageIsNotDisplayed() {
-        assertFalse((getTitle().contains("BBC - Search result for")), "Something come up, we are on the main page again.");
+        assertTrue((getTitle().contains("BBC - Search result for")), "Something come up, we are on the main page again.");
     }
 }
