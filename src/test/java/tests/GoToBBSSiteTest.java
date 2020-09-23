@@ -1,18 +1,40 @@
 package tests;
 
 import basetest.BaseTest;
-import org.openqa.selenium.By;
+import com.sun.org.glassfish.gmbal.Description;
+
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static basetest.BbsConstants.BASE_URL;
+
 
 public class GoToBBSSiteTest extends BaseTest {
 
-    @Test
-    public void testBBSSite() {
-        String baseUrl = "https://bbc.com";
-        driver.get(baseUrl);
-        driver.findElement(By.xpath("//input[@id='orb-search-q']")).sendKeys("java");
-        driver.findElement(By.xpath("//button[@id='orb-search-button']")).click();
-        driver.findElement(By.cssSelector("a")).click();
+    @BeforeMethod
+    public void openSite() {
+        driver.get(BASE_URL);
     }
 
+    @Description("Checks if the search text form is enabled on the page and if the search button is displayed there.")
+    @Test
+    public void testBBSSiteElementsPresent(){
+        BbcMainPage bbsMainPageObject1 = new BbcMainPage(driver);
+        bbsMainPageObject1.searchTextFormIsDisplayed();
+        bbsMainPageObject1.searchTextFormIsEnabled();
+    }
+
+    @Description("Checks if our search  made.")
+    @Test
+    public void testBBSSite() {
+        String searchWord = "dog";
+        BbcMainPage bbcMainPageObject2 = new BbcMainPage(driver);
+        BbcSearchPage bbcSearchPage1 = new BbcSearchPage(driver);
+
+        bbcMainPageObject2.sendTextIntoSearchTextForm(searchWord);
+        bbcMainPageObject2.searchButtonClick();
+        bbcMainPageObject2.mainPageIsNotDisplayed();
+        bbcSearchPage1.clickOnLink();
+        bbcSearchPage1.searchPageIsNotDisplayed();
+    }
 }
