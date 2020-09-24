@@ -1,6 +1,6 @@
 package tests;
 
-import basetest.SingletonChrome;
+import core.SingletonChrome;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -8,13 +8,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.*;
 
-import java.io.File;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
-
-public class ListenerITest implements ITestListener {
+public class ListenerITest implements ITestListener, ISuiteListener, IInvokedMethodListener {
     @Override
     public void onTestStart(ITestResult result) {
         System.out.println("onTestStart-> Test Name: " + result.getName());
@@ -23,6 +18,7 @@ public class ListenerITest implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         System.out.println("onTestSuccess-> Test Name: " + result.getName());
+        SingletonChrome.getInstance().destroy();
     }
 
 //    @Override
@@ -36,13 +32,15 @@ public class ListenerITest implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("*** Ups.. test execution " + result.getMethod().getMethodName() + " failed...");
-       // WebDriver driver = SingletonChrome.initDriver().getDriver();
-       // saveScreenShot(driver);
+        // WebDriver driver = SingletonChrome.initDriver().getDriver();
+        // saveScreenShot(driver);
+        SingletonChrome.getInstance().destroy();
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.println("onTestSkipped-> Test Name: " + result.getName());
+        SingletonChrome.getInstance().destroy();
     }
 
     @Override
@@ -67,13 +65,33 @@ public class ListenerITest implements ITestListener {
 
     @Attachment(value = "Page screenshot", type = "image/png")
     public void saveScreenShot(WebDriver driver) {
-         Allure.getLifecycle().addAttachment("Failure screenshot", "image/png", "", ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
+        Allure.getLifecycle().addAttachment("Failure screenshot", "image/png", "", ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
 
     }
 
     @Attachment(value = "(0)", type = "text/plain")
     public static String saveTextLog(String message) {
         return message;
+    }
+
+    @Override
+    public void beforeInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
+
+    }
+
+    @Override
+    public void afterInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
+
+    }
+
+    @Override
+    public void onStart(ISuite iSuite) {
+
+    }
+
+    @Override
+    public void onFinish(ISuite iSuite) {
+        SingletonChrome.getInstance().destroy();
     }
 }
 

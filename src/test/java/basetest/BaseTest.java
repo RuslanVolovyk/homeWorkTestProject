@@ -4,14 +4,15 @@ import core.SingletonChrome;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
+import static core.SingletonChrome.getInstance;
+
 public class BaseTest {
 
     public WebDriver driver;
 
     @BeforeTest
     public void setUp() {
-        SingletonChrome instanceDriver = SingletonChrome.initDriver();
-        driver = instanceDriver.getDriver();
+        driver = getInstance().getDriver();
     }
 
     @AfterTest(alwaysRun = true)
