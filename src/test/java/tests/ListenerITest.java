@@ -36,8 +36,8 @@ public class ListenerITest implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("*** Ups.. test execution " + result.getMethod().getMethodName() + " failed...");
-        WebDriver driver = SingletonChrome.initDriver().getDriver();
-        saveScreenShot(driver);
+       // WebDriver driver = SingletonChrome.initDriver().getDriver();
+       // saveScreenShot(driver);
     }
 
     @Override
@@ -62,11 +62,7 @@ public class ListenerITest implements ITestListener {
     @Override
     public void onFinish(ITestContext context) {
         System.out.println("onFinish-> Test Name: " + context.getName());
-        System.out.println("Screenshot captured for test case: " + Arrays.toString(context.getAllTestMethods()));
-        byte[] screenShot = ((TakesScreenshot) SingletonChrome.initDriver().getDriver()).getScreenshotAs(OutputType.BYTES);
-        Allure.getLifecycle().addAttachment(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MMM-yy_hh:mm:ss")), "image/png", "png", screenShot);
 
-        saveTextLog(context.getStartDate() + "finished with such configuration: " + context.getPassedConfigurations());
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")

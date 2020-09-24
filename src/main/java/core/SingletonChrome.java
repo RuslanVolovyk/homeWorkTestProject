@@ -12,7 +12,7 @@ public class SingletonChrome extends WebDriverOptions {
     }
 
     public WebDriver getDriver() {
-        System.setProperty("webdriver.chrome.driver", "web-drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/web-drivers/chromedriver2.exe");
         driver = new ChromeDriver(getChromeOptions());
         return driver;
     }
