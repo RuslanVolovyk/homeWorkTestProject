@@ -3,23 +3,22 @@ package core;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SingletonChrome extends WebDriverOptions {
+public class MultiToneChrome extends WebDriverOptions {
 
-    private SingletonChrome() {
+    public WebDriver driver;
+    private static ThreadLocal<MultiToneChrome> driverThread = new ThreadLocal<>();
+
+    private MultiToneChrome() {
     }
 
-    public static SingletonChrome getInstance() {
+    public static MultiToneChrome getInstance() {
         if (driverThread.get() == null) {
-            synchronized (SingletonChrome.class) {
-                driverThread.set(new SingletonChrome());
+            synchronized (MultiToneChrome.class) {
+                driverThread.set(new MultiToneChrome());
             }
         }
         return driverThread.get();
     }
-
-    private static ThreadLocal<SingletonChrome> driverThread = new ThreadLocal<>();
-
-    public WebDriver driver;
 
     public WebDriver getDriver() {
         if (driver == null) {
@@ -29,7 +28,6 @@ public class SingletonChrome extends WebDriverOptions {
             return driver;
         }
     }
-
 
     public void destroy() {
         if (driver != null) {

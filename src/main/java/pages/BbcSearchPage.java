@@ -1,14 +1,12 @@
-package tests;
+package pages;
 
-import basetest.PageObjectCreator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
-import static org.testng.Assert.*;
-
-public class BbcSearchPage extends PageObjectCreator {
+public class BbcSearchPage extends core.PageObjectCreator {
 
     public BbcSearchPage(WebDriver driver) {
         super(driver);
@@ -28,6 +26,6 @@ public class BbcSearchPage extends PageObjectCreator {
 
     @Step("checking if the search page is not displayed")
     public void searchPageIsNotDisplayed() {
-        assertTrue((getTitle().contains("BBC - Search result for")), "Something come up, we are on the main page again.");
+        Assert.assertTrue((getTitle().contains("BBC - Search result for")), "Something come up, we are on the main page again.");
     }
 }

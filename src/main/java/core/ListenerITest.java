@@ -1,6 +1,5 @@
-package tests;
+package core;
 
-import core.SingletonChrome;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -18,7 +17,7 @@ public class ListenerITest implements ITestListener, ISuiteListener, IInvokedMet
     @Override
     public void onTestSuccess(ITestResult result) {
         System.out.println("onTestSuccess-> Test Name: " + result.getName());
-        SingletonChrome.getInstance().destroy();
+        MultiToneChrome.getInstance().destroy();
     }
 
 //    @Override
@@ -34,13 +33,13 @@ public class ListenerITest implements ITestListener, ISuiteListener, IInvokedMet
         System.out.println("*** Ups.. test execution " + result.getMethod().getMethodName() + " failed...");
         // WebDriver driver = SingletonChrome.initDriver().getDriver();
         // saveScreenShot(driver);
-        SingletonChrome.getInstance().destroy();
+        MultiToneChrome.getInstance().destroy();
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.println("onTestSkipped-> Test Name: " + result.getName());
-        SingletonChrome.getInstance().destroy();
+        MultiToneChrome.getInstance().destroy();
     }
 
     @Override
@@ -91,7 +90,7 @@ public class ListenerITest implements ITestListener, ISuiteListener, IInvokedMet
 
     @Override
     public void onFinish(ISuite iSuite) {
-        SingletonChrome.getInstance().destroy();
+        MultiToneChrome.getInstance().destroy();
     }
 }
 

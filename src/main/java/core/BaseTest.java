@@ -1,10 +1,9 @@
-package basetest;
+package core;
 
-import core.SingletonChrome;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-import static core.SingletonChrome.getInstance;
+import static core.MultiToneChrome.getInstance;
 
 public class BaseTest {
 

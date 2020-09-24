@@ -1,20 +1,22 @@
-package tests;
+package test;
 
-import basetest.BaseTest;
+import core.BaseTest;
 import com.sun.org.glassfish.gmbal.Description;
 
-import core.SingletonChrome;
+import core.MultiToneChrome;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.BbcMainPage;
+import pages.BbcSearchPage;
 
-import static basetest.BbsConstants.BASE_URL;
+import static core.BbsConstants.BASE_URL;
 
 
 public class GoToBBSSiteTest extends BaseTest {
 
     @BeforeMethod
     public void openSite() {
-       SingletonChrome.getInstance().getDriver().get(BASE_URL);
+       MultiToneChrome.getInstance().getDriver().get(BASE_URL);
     }
 
     @Description("Checks if the search text form is enabled on the page and if the search button is displayed there.")

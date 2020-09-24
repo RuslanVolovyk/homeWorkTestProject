@@ -1,14 +1,12 @@
-package tests;
+package pages;
 
-import basetest.PageObjectCreator;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
-import static org.testng.Assert.*;
-
-public class BbcMainPage extends PageObjectCreator {
+public class BbcMainPage extends core.PageObjectCreator {
 
     public BbcMainPage(WebDriver driver) {
         super(driver);
@@ -37,16 +35,16 @@ public class BbcMainPage extends PageObjectCreator {
 
     @Step("checking if the search text box form is enable")
     public void searchTextFormIsEnabled() {
-        assertTrue(searchTextForm.isEnabled(), "The required search text form is absent.");
+        Assert.assertTrue(searchTextForm.isEnabled(), "The required search text form is absent.");
     }
 
     @Step("checking if the search text box form is displayed")
     public void searchTextFormIsDisplayed() {
-        assertTrue(searchTextForm.isDisplayed(), "Sorry,the search button is invisible!");
+        Assert.assertTrue(searchTextForm.isDisplayed(), "Sorry,the search button is invisible!");
     }
 
     @Step("checking if the home page is not displayed")
     public void mainPageIsNotDisplayed() {
-        assertNotEquals(getTitle(), "BBC - Homepage", "Something come up, we are on the main page again.");
+        Assert.assertNotEquals(getTitle(), "BBC - Homepage", "Something come up, we are on the main page again.");
     }
 }

@@ -4,12 +4,12 @@
 <suite name="BBS suite + listeners" verbose="1">
 
     <listeners>
-        <listener class-name="tests.ListenerITest"/>
+        <listener class-name="core.ListenerITest"/>
     </listeners>
 
     <test name="Find bbs.com">
         <packages>
-            <package name="tests"/>
+            <package name="test"/>
         </packages>
     </test>
 
