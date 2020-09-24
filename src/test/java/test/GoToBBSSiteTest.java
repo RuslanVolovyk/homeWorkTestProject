@@ -35,9 +35,9 @@ public class GoToBBSSiteTest extends BaseTest {
         BbcSearchPage bbcSearchPage1 = new BbcSearchPage(driver);
 
         bbcMainPageObject2.sendTextIntoSearchTextForm(searchWord);
-        bbcMainPageObject2.searchButtonClick();
+        bbcMainPageObject2.searchButtonLeftMouseClick();
         bbcMainPageObject2.mainPageIsNotDisplayed();
-        bbcSearchPage1.clickOnLink();
+        bbcSearchPage1.clickOnFirstLink();
         bbcSearchPage1.searchPageIsNotDisplayed();
     }
 }
