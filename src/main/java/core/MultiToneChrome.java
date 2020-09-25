@@ -3,6 +3,8 @@ package core;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class MultiToneChrome extends WebDriverOptions {
 
     public WebDriver driver;
@@ -39,6 +41,7 @@ public class MultiToneChrome extends WebDriverOptions {
     private synchronized WebDriver initialDriver() {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/web-drivers/chromedriver");
         driver = new ChromeDriver(getChromeOptions());
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
         return driver;
     }
 }
