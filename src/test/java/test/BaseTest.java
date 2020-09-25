@@ -1,4 +1,4 @@
-package core;
+package test;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -9,9 +9,9 @@ public class BaseTest {
 
     public WebDriver driver;
 
-    @BeforeTest
-    public void setUp() {
+    public WebDriver setUp() {
         driver = getInstance().getDriver();
+        return driver;
     }
 
     @AfterTest(alwaysRun = true)

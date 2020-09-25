@@ -1,27 +1,33 @@
 package test;
 
-import core.BaseTest;
 import com.sun.org.glassfish.gmbal.Description;
 
-import core.MultiToneChrome;
+import io.qameta.allure.TmsLink;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BbcMainPage;
 import pages.BbcSearchPage;
 
-import static core.BbsConstants.BASE_URL;
+import static data.BbsConstants.BASE_URL;
 
 
 public class GoToBBSSiteTest extends BaseTest {
 
     @BeforeMethod
     public void openSite() {
-       MultiToneChrome.getInstance().getDriver().get(BASE_URL);
+        setUp().get(BASE_URL);
+
+    }
+
+    @AfterMethod
+    public void driverDestroy() {
+        tearDown();
     }
 
     @Description("Checks if the search text form is enabled on the page and if the search button is displayed there.")
     @Test
-    public void testBBSSiteElementsPresent(){
+    public void testBBSSiteElementsPresent() {
         BbcMainPage bbsMainPageObject1 = new BbcMainPage(driver);
         bbsMainPageObject1.searchTextFormIsDisplayed();
         bbsMainPageObject1.searchTextFormIsEnabled();
@@ -29,6 +35,7 @@ public class GoToBBSSiteTest extends BaseTest {
 
     @Description("Checks if our search  made.")
     @Test
+    @TmsLink("1")
     public void testBBSSite() {
         String searchWord = "dog";
         BbcMainPage bbcMainPageObject2 = new BbcMainPage(driver);

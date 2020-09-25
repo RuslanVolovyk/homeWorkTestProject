@@ -22,8 +22,10 @@ public class ListenerITest implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("*** test execution " + result.getMethod().getMethodName() + " failed!");
+        System.out.println("*** execution of: " + result.getMethod().getMethodName() + " failed!");
         saveScreenShot(MultiToneChrome.getInstance().driver);
+        MultiToneChrome.getInstance().destroy();
+
     }
 
     @Override

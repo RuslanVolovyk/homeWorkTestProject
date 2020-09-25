@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class BbcMainPage extends core.PageObjectCreator implements ClickOn {
+public class BbcMainPage extends PageObjectCreator implements ClickOn {
 
     public BbcMainPage(WebDriver driver) {
         super(driver);
@@ -42,13 +42,13 @@ public class BbcMainPage extends core.PageObjectCreator implements ClickOn {
 
     @Step("checking if the search text box form is displayed")
     public void searchTextFormIsDisplayed() {
-        Assert.assertTrue(searchTextForm.isDisplayed(), "ERROR The wonted search form: " +searchTextForm +
+        Assert.assertTrue(searchTextForm.isDisplayed(), "The wonted search form: " +searchTextForm +
                 " is invisible!");
     }
 
     @Step("checking if the home page is not displayed")
     public void mainPageIsNotDisplayed() {
-        Assert.assertNotEquals(getPageTitle(), "BBC - Homepage", "ERROR The " +getPageTitle()+
+        Assert.assertNotEquals(getPageTitle(), "BBC - Homepage", "The " +getPageTitle()+
                 " is displayed!");
     }
 }

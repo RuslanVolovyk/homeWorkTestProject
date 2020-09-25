@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class BbcSearchPage extends core.PageObjectCreator implements ClickOn {
+public class BbcSearchPage extends PageObjectCreator implements ClickOn {
 
     public BbcSearchPage(WebDriver driver) {
         super(driver);
@@ -27,7 +27,7 @@ public class BbcSearchPage extends core.PageObjectCreator implements ClickOn {
 
     @Step("checking if the search page is not displayed")
     public void searchPageIsNotDisplayed() {
-        Assert.assertTrue((getPageTitle().contains("BBC - Search result for")), "ERROR The BBC - search page is" +
+        Assert.assertTrue((getPageTitle().contains("BBC - Search result for")), "The BBC - search page is" +
                 " shown! The page title is: " + getPageTitle());
     }
 }
