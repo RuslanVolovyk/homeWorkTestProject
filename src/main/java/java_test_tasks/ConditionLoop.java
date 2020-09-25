@@ -1,3 +1,5 @@
+package java_test_tasks;
+
 public class ConditionLoop {
     static int a;
 

@@ -3,7 +3,7 @@
 <suite name="BBS suite" verbose="1" >
     <test name="Find bbs.com"   >
         <packages>
-            <package name="tests" />
+            <package name="test" />
         </packages>
     </test>
 </suite>

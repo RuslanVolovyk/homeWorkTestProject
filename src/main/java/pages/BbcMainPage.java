@@ -1,14 +1,13 @@
-package tests;
+package pages;
 
-import basetest.PageObjectCreator;
+import core.ClickOn;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
-import static org.testng.Assert.*;
-
-public class BbcMainPage extends PageObjectCreator {
+public class BbcMainPage extends PageObjectCreator implements ClickOn {
 
     public BbcMainPage(WebDriver driver) {
         super(driver);
@@ -21,13 +20,13 @@ public class BbcMainPage extends PageObjectCreator {
     WebElement searchButton;
 
     @Step("clicking on the search button")
-    public void searchButtonClick() {
-        searchButton.click();
+    public void searchButtonLeftMouseClick() {
+        clickLeftButtonOfMouse(searchButton);
     }
 
     @Step("getting a title of the page")
-    public String getTitle() {
-        return super.driver.getTitle();
+    public String getPageTitle() {
+        return driver.getTitle();
     }
 
     @Step("putting a word into the search text box")
@@ -37,16 +36,19 @@ public class BbcMainPage extends PageObjectCreator {
 
     @Step("checking if the search text box form is enable")
     public void searchTextFormIsEnabled() {
-        assertTrue(searchTextForm.isEnabled(), "The required search text form is absent.");
+        Assert.assertTrue(searchTextForm.isEnabled(), "ERROR The required search text form: "+ searchTextForm +
+                " is absent!");
     }
 
     @Step("checking if the search text box form is displayed")
     public void searchTextFormIsDisplayed() {
-        assertTrue(searchTextForm.isDisplayed(), "Sorry,the search button is invisible!");
+        Assert.assertTrue(searchTextForm.isDisplayed(), "The wonted search form: " +searchTextForm +
+                " is invisible!");
     }
 
     @Step("checking if the home page is not displayed")
     public void mainPageIsNotDisplayed() {
-        assertNotEquals(getTitle(), "BBC - Homepage", "Something come up, we are on the main page again.");
+        Assert.assertNotEquals(getPageTitle(), "BBC - Homepage", "The " +getPageTitle()+
+                " is displayed!");
     }
 }

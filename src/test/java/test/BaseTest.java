@@ -1,18 +1,17 @@
-package basetest;
+package test;
 
-import core.SingletonChrome;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-import static core.SingletonChrome.getInstance;
+import static core.MultiToneChrome.getInstance;
 
 public class BaseTest {
 
     public WebDriver driver;
 
-    @BeforeTest
-    public void setUp() {
+    public WebDriver setUp() {
         driver = getInstance().getDriver();
+        return driver;
     }
 
     @AfterTest(alwaysRun = true)
