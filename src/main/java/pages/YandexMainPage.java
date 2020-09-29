@@ -8,11 +8,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class YandexMainPage extends PageObjectCreator implements ClickOn {
 
-      public YandexMainPage(WebDriver driver) {
+    public YandexMainPage(WebDriver driver) {
         super(driver);
     }
-        @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
-        WebElement linkToPost;
+
+    @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
+    WebElement linkToPost;
 
     @Step("clicking on the link to the post authorization page")
     public void clicktLinkToPostLeftMouseClick() {

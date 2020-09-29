@@ -27,16 +27,13 @@ public class YandexTest1 extends BaseTest {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
-
         yandexMainPage.clicktLinkToPostLeftMouseClick();
-//        yandexAuthorizationsPage.findToLoginForm();
-//        yandexAuthorizationsPage.switchToLoginForm();
-        yandexAuthorizationsPage.getLoginInputField();
-//        yandexAuthorizationsPage.putLoginInput();
-//        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
-//        yandexAuthorizationsPage.putPasswordInput();
-//        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
-//        yandexMailPage.checkUserName();
+        yandexAuthorizationsPage.switchToPassportTab();
+        yandexAuthorizationsPage.putLoginInput();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexAuthorizationsPage.putPasswordInput();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexMailPage.checkUserName();
     }
 
 }
