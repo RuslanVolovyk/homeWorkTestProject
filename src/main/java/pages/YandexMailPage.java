@@ -20,6 +20,6 @@ public class YandexMailPage extends PageObjectCreator{
     @Step("check the user name")
     public  void checkUserName(){
         System.out.println("User name is: " +userInsignia.getText());
-        Assert.assertTrue(userInsignia.getText() == LOGIN, "The user is not "+ LOGIN );
+        Assert.assertEquals(userInsignia.getText(), LOGIN, "The user is not "+ LOGIN );
     }
 }

@@ -4,6 +4,7 @@
     <test name="Find bbs.com"   >
         <packages>
             <package name="test" />
+
         </packages>
     </test>
 </suite>
