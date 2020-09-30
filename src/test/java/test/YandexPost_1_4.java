@@ -76,6 +76,7 @@ public class YandexPost_1_4 extends BaseTest {
         yandexAuthorizationsPage.putWrongPassword();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.checkErrorMessage();
+        yandexAuthorizationsPage.checkWrongPasswordMessage();
     }
 
     @Description("Negative check  with an incorrect user name")
@@ -90,5 +91,6 @@ public class YandexPost_1_4 extends BaseTest {
         yandexAuthorizationsPage.putWrongLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.checkErrorMessage();
+        yandexAuthorizationsPage.checkWrongAccountMessage();
     }
 }

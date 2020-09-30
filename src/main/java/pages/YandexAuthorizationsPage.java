@@ -73,7 +73,7 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
         putTextIntoField(passwordInputField, WRONGPASSWORD);
     }
 
-    @Step("check an error message")
+    @Step("check presence of an error message")
     public void checkErrorMessage() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(errorMessage));
         softAssert.assertTrue(errorMessage.isDisplayed(), "The wrong data input message is not shown ");
@@ -83,5 +83,15 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     public void checkUrl() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(loginButton));
         softAssert.assertTrue(loginButton.isDisplayed(), "The user is not signed out ");
+    }
+
+    @Step("check if the error message = Неверный пароль")
+    public void checkWrongPasswordMessage() {
+        softAssert.assertEquals(errorMessage.getText(), "Неверный пароль", "Error message is different");
+    }
+
+    @Step("check if the error message = Такого аккаунта нет")
+    public void checkWrongAccountMessage() {
+        softAssert.assertEquals(errorMessage.getText(), "Такого аккаунта нет", "Error message is different");
     }
 }
