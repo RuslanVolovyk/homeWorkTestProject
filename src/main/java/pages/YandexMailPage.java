@@ -26,7 +26,6 @@ public class YandexMailPage extends PageObjectCreator implements ClickOn {
     @FindBy(xpath = "//li[5]//span[@class='menu__text']")
     WebElement signOutLink;
 
-
     @Step("check the user name")
     public void checkUserName() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(userName));

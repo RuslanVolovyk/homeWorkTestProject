@@ -7,4 +7,8 @@ public interface ClickOn {
     default void clickOnMouse(WebElement element) {
         element.click();
     }
+
+    default void putTextIntoField(WebElement element, String text) {
+        element.sendKeys(text);
+    }
 }

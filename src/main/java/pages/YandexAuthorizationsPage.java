@@ -50,7 +50,7 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
         new WebDriverWait(driver, 20)
                 .withMessage("login field not found")
                 .until(ExpectedConditions.elementToBeClickable(loginInputField));
-        loginInputField.sendKeys(LOGIN);
+        putTextIntoField(loginInputField, LOGIN);
     }
 
     @Step("input the 'andersentester' data into the log-in field")
@@ -58,17 +58,17 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
         new WebDriverWait(driver, 20)
                 .withMessage("login field not found")
                 .until(ExpectedConditions.elementToBeClickable(loginInputField));
-        loginInputField.sendKeys(WRONGLOGIN);
+        putTextIntoField(loginInputField, WRONGLOGIN);
     }
 
     @Step("input the 'password123' value into the password field")
     public void putPassword() {
-        passwordInputField.sendKeys(PASSWORD);
+        putTextIntoField(passwordInputField, PASSWORD);
     }
 
     @Step("input the 'Nopassword123' wrong value into the password field")
     public void putWrongPassword() {
-        passwordInputField.sendKeys(WRONGPASSWORD);
+        putTextIntoField(passwordInputField, WRONGPASSWORD);
     }
 
     @Step("check an error message")
