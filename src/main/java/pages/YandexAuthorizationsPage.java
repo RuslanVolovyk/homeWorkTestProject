@@ -8,13 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Set;
 
 import static data.YandexConstants.*;
 
 public class YandexAuthorizationsPage extends PageObjectCreator implements ClickOn, JsActions {
+
+    SoftAssert softAssert = new SoftAssert();
 
     public YandexAuthorizationsPage(WebDriver driver) {
         super(driver);
@@ -74,12 +76,12 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     @Step("check an error message")
     public void checkErrorMessage() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(errorMessage));
-        Assert.assertTrue(errorMessage.isDisplayed(), "The wrong data input message is not shown ");
+        softAssert.assertTrue(errorMessage.isDisplayed(), "The wrong data input message is not shown ");
     }
 
     @Step("check the current URL")
     public void checkUrl() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(loginButton));
-        Assert.assertTrue(loginButton.isDisplayed(), "The user is not signed out ");
+        softAssert.assertTrue(loginButton.isDisplayed(), "The user is not signed out ");
     }
 }

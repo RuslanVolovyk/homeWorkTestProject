@@ -7,11 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import static data.YandexConstants.LOGIN;
 
 public class YandexMailPage extends PageObjectCreator implements ClickOn {
+    SoftAssert softAssert = new SoftAssert();
 
     public YandexMailPage(WebDriver driver) {
         super(driver);
@@ -29,7 +30,7 @@ public class YandexMailPage extends PageObjectCreator implements ClickOn {
     @Step("check the user name")
     public void checkUserName() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(userName));
-        Assert.assertEquals(userName.getText(), LOGIN, "The user is not " + LOGIN);
+        softAssert.assertEquals(userName.getText(), LOGIN, "The user is not " + LOGIN);
     }
 
     @Step("click on user menu")
@@ -41,7 +42,7 @@ public class YandexMailPage extends PageObjectCreator implements ClickOn {
     @Step("check the visibility of the user menu")
     public void checkUserMenuVisibility() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(userMenu));
-        Assert.assertTrue(userMenu.isDisplayed(), "The user menu is invisible");
+        softAssert.assertTrue(userMenu.isDisplayed(), "The user menu is invisible");
     }
 
     @Step("click on sign-out link")

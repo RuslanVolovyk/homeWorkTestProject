@@ -5,11 +5,14 @@ import io.qameta.allure.TmsLink;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.YandexAuthorizationsPage;
+import pages.YandexMailPage;
+import pages.YandexMainPage;
 
 import static data.YandexConstants.BASE_URL;
 
 public class YandexPost_1_4 extends BaseTest {
+
     @BeforeMethod
     public void openSite() {
         setUp().get(BASE_URL);
@@ -24,6 +27,7 @@ public class YandexPost_1_4 extends BaseTest {
     @Test
     @TmsLink("1")
     public void logInPostAccount() {
+
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
@@ -41,6 +45,7 @@ public class YandexPost_1_4 extends BaseTest {
     @Test
     @TmsLink("2")
     public void logInAndOutPostAccount() {
+
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
@@ -79,6 +84,7 @@ public class YandexPost_1_4 extends BaseTest {
     public void negativeUserNameInput() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
+
         yandexMainPage.clicktLinkToPostByMouse();
         yandexAuthorizationsPage.switchToPassportTab();
         yandexAuthorizationsPage.putWrongLogin();
