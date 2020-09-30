@@ -16,8 +16,8 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     WebElement linkToPost;
 
     @Step("clicking on the link to the post authorization page")
-    public void clicktLinkToPostLeftMouseClick() {
-        clickLeftButtonOfMouse(linkToPost);
+    public void clicktLinkToPostByMouse() {
+        clickOnMouse(linkToPost);
     }
 }
 

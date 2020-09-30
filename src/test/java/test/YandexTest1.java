@@ -20,20 +20,40 @@ public class YandexTest1 extends BaseTest {
         tearDown();
     }
 
-    @Description("Check log-inning into the andersentester post")
+    @Description("Check log-inning into the andersentester's post")
     @Test
     @TmsLink("1")
     public void logInPostAccount() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
-        yandexMainPage.clicktLinkToPostLeftMouseClick();
+
+        yandexMainPage.clicktLinkToPostByMouse();
         yandexAuthorizationsPage.switchToPassportTab();
-        yandexAuthorizationsPage.putLoginInput();
+        yandexAuthorizationsPage.putLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
-        yandexAuthorizationsPage.putPasswordInput();
+        yandexAuthorizationsPage.putPassword();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexMailPage.checkUserName();
     }
 
+    @Description("Check log-inning and log-out the andersentester's post account")
+    @Test
+    @TmsLink("2")
+    public void logInAndOutPostAccount() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
+        YandexMailPage yandexMailPage = new YandexMailPage(driver);
+
+        yandexMainPage.clicktLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToPassportTab();
+        yandexAuthorizationsPage.putLogin();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexAuthorizationsPage.putPassword();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexMailPage.clickOnUserMenu();
+        yandexMailPage.checkUserMenuVisibility();
+        yandexMailPage.clickOnSignOutLink();
+        yandexAuthorizationsPage.checkUrl();
+    }
 }

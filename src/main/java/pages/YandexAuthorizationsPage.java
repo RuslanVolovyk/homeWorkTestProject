@@ -1,30 +1,23 @@
 package pages;
 
 import core.ClickOn;
+import core.JsActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.Set;
 
 import static data.YandexConstants.*;
 
-public class YandexAuthorizationsPage extends PageObjectCreator implements ClickOn {
-
+public class YandexAuthorizationsPage extends PageObjectCreator implements ClickOn, JsActions {
 
     public YandexAuthorizationsPage(WebDriver driver) {
         super(driver);
-    }
-
-    @Step("switch to the new log-in passport tab ")
-    public void switchToPassportTab() {
-        Set<String> availableTabWindows = driver.getWindowHandles();
-        if (availableTabWindows.size() != 1)
-            for (String tabNames : availableTabWindows)
-                driver.switchTo().window(tabNames);
     }
 
     @FindBy(xpath = "//input[@id='passp-field-login']")
@@ -36,13 +29,21 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     @FindBy(className = "Button2_type_submit")
     WebElement loginButton;
 
+    @Step("switch to the new log-in passport tab ")
+    public void switchToPassportTab() {
+        Set<String> availableTabWindows = driver.getWindowHandles();
+        if (availableTabWindows.size() != 1)
+            for (String tabName : availableTabWindows)
+                driver.switchTo().window(tabName);
+    }
+
     @Step("clicking on the log-in button")
     public void leftMouseClickOnButtonIn() {
-        clickLeftButtonOfMouse(loginButton);
+        clickOnMouse(loginButton);
     }
 
     @Step("input the 'andersentester' data into the log-in field")
-    public void putLoginInput() {
+    public void putLogin() {
         new WebDriverWait(driver, 20)
                 .withMessage("login field not found")
                 .until(ExpectedConditions.elementToBeClickable(loginInputField));
@@ -50,7 +51,13 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     }
 
     @Step("input the 'password123' value into the password field")
-    public void putPasswordInput() {
+    public void putPassword() {
         passwordInputField.sendKeys(PASSWORD);
     }
+
+    @Step("check the current URL")
+    public void checkUrl() {
+        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(loginButton));
+        Assert.assertTrue(loginButton.isDisplayed(), "The user is not signed out ");
+      }
 }

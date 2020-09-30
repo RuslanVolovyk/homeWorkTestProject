@@ -45,7 +45,7 @@ public class UkrNetMainPage extends PageObjectCreator implements ClickOn {
 
     @Step("clicking on the submit button")
     public void leftMouseClickOnButtonIn() {
-        clickLeftButtonOfMouse(submitButton);
+        clickOnMouse(submitButton);
     }
 
     @Step("check the user name")

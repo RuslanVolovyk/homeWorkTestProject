@@ -21,7 +21,7 @@ public class BbcMainPage extends PageObjectCreator implements ClickOn {
 
     @Step("clicking on the search button")
     public void searchButtonLeftMouseClick() {
-        clickLeftButtonOfMouse(searchButton);
+        clickOnMouse(searchButton);
     }
 
     @Step("getting a title of the page")
