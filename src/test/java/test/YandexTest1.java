@@ -56,4 +56,21 @@ public class YandexTest1 extends BaseTest {
         yandexMailPage.clickOnSignOutLink();
         yandexAuthorizationsPage.checkUrl();
     }
+
+    @Description("Negative check log-inning into the andersentester's post")
+    @Test
+    @TmsLink("3")
+    public void negativePasswordInput() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
+
+        yandexMainPage.clicktLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToPassportTab();
+        yandexAuthorizationsPage.putLogin();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexAuthorizationsPage.putWrongPassword();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexAuthorizationsPage.checkErrorMessage();
+    }
+
 }

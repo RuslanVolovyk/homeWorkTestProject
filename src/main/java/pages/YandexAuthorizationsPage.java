@@ -23,6 +23,9 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     @FindBy(xpath = "//input[@id='passp-field-login']")
     WebElement loginInputField;
 
+    @FindBy(className = "Textinput-Hint")
+    WebElement errorMessage;
+
     @FindBy(xpath = "//input[@id='passp-field-passwd']")
     WebElement passwordInputField;
 
@@ -55,9 +58,20 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
         passwordInputField.sendKeys(PASSWORD);
     }
 
+    @Step("input the 'Nopassword123' wrong value into the password field")
+    public void putWrongPassword() {
+        passwordInputField.sendKeys(WRONGPASSWORD);
+    }
+
+    @Step("check an error message")
+    public void checkErrorMessage() {
+        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(errorMessage));
+        Assert.assertTrue(errorMessage.isDisplayed(), "The wrong password message is not shown ");
+    }
+
     @Step("check the current URL")
     public void checkUrl() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(loginButton));
         Assert.assertTrue(loginButton.isDisplayed(), "The user is not signed out ");
-      }
+    }
 }
