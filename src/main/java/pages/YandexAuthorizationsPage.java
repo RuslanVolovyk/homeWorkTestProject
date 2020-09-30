@@ -53,6 +53,14 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
         loginInputField.sendKeys(LOGIN);
     }
 
+    @Step("input the 'andersentester' data into the log-in field")
+    public void putWrongLogin() {
+        new WebDriverWait(driver, 20)
+                .withMessage("login field not found")
+                .until(ExpectedConditions.elementToBeClickable(loginInputField));
+        loginInputField.sendKeys(WRONGLOGIN);
+    }
+
     @Step("input the 'password123' value into the password field")
     public void putPassword() {
         passwordInputField.sendKeys(PASSWORD);
@@ -66,7 +74,7 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     @Step("check an error message")
     public void checkErrorMessage() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(errorMessage));
-        Assert.assertTrue(errorMessage.isDisplayed(), "The wrong password message is not shown ");
+        Assert.assertTrue(errorMessage.isDisplayed(), "The wrong data input message is not shown ");
     }
 
     @Step("check the current URL")

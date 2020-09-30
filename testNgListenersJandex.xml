@@ -7,7 +7,7 @@
 
     <test name="Yandex1">
         <classes>
-            <class name="test.YandexTest1"/>
+            <class name="test.YandexPost_1_4"/>
         </classes>
     </test>
 </suite>

@@ -9,7 +9,7 @@ import pages.*;
 
 import static data.YandexConstants.BASE_URL;
 
-public class YandexTest1 extends BaseTest {
+public class YandexPost_1_4 extends BaseTest {
     @BeforeMethod
     public void openSite() {
         setUp().get(BASE_URL);
@@ -73,4 +73,16 @@ public class YandexTest1 extends BaseTest {
         yandexAuthorizationsPage.checkErrorMessage();
     }
 
+    @Description("Negative check  with an incorrect user name")
+    @Test
+    @TmsLink("4")
+    public void negativeUserNameInput() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
+        yandexMainPage.clicktLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToPassportTab();
+        yandexAuthorizationsPage.putWrongLogin();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexAuthorizationsPage.checkErrorMessage();
+    }
 }
