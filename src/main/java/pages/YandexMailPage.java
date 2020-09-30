@@ -23,7 +23,7 @@ public class YandexMailPage extends PageObjectCreator implements ClickOn {
     @FindBy(className = "light-popup")
     WebElement userMenu;
 
-    @FindBy(xpath = "//li[5]//span[@class='menu__text']")
+    @FindBy(partialLinkText = "Выйти из сервисов")
     WebElement signOutLink;
 
     @Step("check the user name")
