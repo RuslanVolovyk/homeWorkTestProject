@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite Yandex.by with listeners" verbose="1">
+    <listeners>
+        <listener class-name="core.ListenerITest"/>
+    </listeners>
+
+    <test name="Yandex1">
+        <classes>
+            <class name="test.YandexPostTest"/>
+        </classes>
+    </test>
+</suite>

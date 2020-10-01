@@ -4,7 +4,11 @@ import org.openqa.selenium.WebElement;
 
 public interface ClickOn {
 
-    default void clickLeftButtonOfMouse(WebElement element) {
-            element.click();
+    default void clickOnMouse(WebElement element) {
+        element.click();
+    }
+
+    default void putTextIntoField(WebElement element, String text) {
+        element.sendKeys(text);
     }
 }

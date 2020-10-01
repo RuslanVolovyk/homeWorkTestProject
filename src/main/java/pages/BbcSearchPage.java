@@ -22,7 +22,7 @@ public class BbcSearchPage extends PageObjectCreator implements ClickOn {
     }
 
     public void clickOnFirstLink() {
-        clickLeftButtonOfMouse(firstLinkSelector);
+        clickOnMouse(firstLinkSelector);
     }
 
     @Step("checking if the search page is not displayed")
