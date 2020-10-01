@@ -11,7 +11,7 @@ import pages.YandexMainPage;
 
 import static data.YandexConstants.BASE_URL;
 
-public class YandexPost_1_4 extends BaseTest {
+public class YandexPostTest extends BaseTest {
 
     @BeforeMethod
     public void openSite() {
@@ -59,7 +59,7 @@ public class YandexPost_1_4 extends BaseTest {
         yandexMailPage.clickOnUserMenu();
         yandexMailPage.checkUserMenuVisibility();
         yandexMailPage.clickOnSignOutLink();
-        yandexAuthorizationsPage.checkUrl();
+        yandexAuthorizationsPage.checkIfUserSigned();
     }
 
     @Description("Negative check log-inning into the andersentester's post")
@@ -75,7 +75,6 @@ public class YandexPost_1_4 extends BaseTest {
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.putWrongPassword();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
-        yandexAuthorizationsPage.checkErrorMessage();
         yandexAuthorizationsPage.checkWrongPasswordMessage();
     }
 
@@ -90,7 +89,6 @@ public class YandexPost_1_4 extends BaseTest {
         yandexAuthorizationsPage.switchToPassportTab();
         yandexAuthorizationsPage.putWrongLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
-        yandexAuthorizationsPage.checkErrorMessage();
         yandexAuthorizationsPage.checkWrongAccountMessage();
     }
 }

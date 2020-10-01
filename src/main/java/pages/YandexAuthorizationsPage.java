@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.util.Set;
@@ -15,8 +16,6 @@ import java.util.Set;
 import static data.YandexConstants.*;
 
 public class YandexAuthorizationsPage extends PageObjectCreator implements ClickOn, JsActions {
-
-    SoftAssert softAssert = new SoftAssert();
 
     public YandexAuthorizationsPage(WebDriver driver) {
         super(driver);
@@ -73,25 +72,31 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
         putTextIntoField(passwordInputField, WRONGPASSWORD);
     }
 
-    @Step("check presence of an error message")
-    public void checkErrorMessage() {
+    @Step("check presence of  the error message 'wrong password'")
+    public void checkWrongPasswordMessage() {
+        SoftAssert softAssert = new SoftAssert();
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(errorMessage));
         softAssert.assertTrue(errorMessage.isDisplayed(), "The wrong data input message is not shown ");
+        softAssert.assertEquals(getElementValue(errorMessage), "Неверный пароль", "Error message is different");
+        softAssert.assertAll();
     }
 
-    @Step("check the current URL")
-    public void checkUrl() {
+    @Step("check if any user signed")
+    public void checkIfUserSigned() {
         new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(loginButton));
-        softAssert.assertTrue(loginButton.isDisplayed(), "The user is not signed out ");
+        Assert.assertTrue(loginButton.isDisplayed(), "The user is not signed out ");
     }
 
-    @Step("check if the error message = Неверный пароль")
-    public void checkWrongPasswordMessage() {
-        softAssert.assertEquals(errorMessage.getText(), "Неверный пароль", "Error message is different");
-    }
-
-    @Step("check if the error message = Такого аккаунта нет")
+    @Step("check presence of the error message 'wrong account name'")
     public void checkWrongAccountMessage() {
-        softAssert.assertEquals(errorMessage.getText(), "Такого аккаунта нет", "Error message is different");
+        SoftAssert softAssert = new SoftAssert();
+        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(errorMessage));
+        softAssert.assertTrue(errorMessage.isDisplayed(), "The wrong data input message is not shown ");
+        softAssert.assertEquals(getElementValue(errorMessage), "Такого аккаунта нет", "Error message is different");
+        softAssert.assertAll();
+    }
+
+    String getElementValue(WebElement element) {
+        return element.getText();
     }
 }
