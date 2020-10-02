@@ -32,8 +32,8 @@ public class YandexPostTest extends BaseTest {
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
 
-        yandexMainPage.clicktLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToPassportTab();
+        yandexMainPage.clickLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToNewTab();
         yandexAuthorizationsPage.putLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.putPassword();
@@ -50,8 +50,8 @@ public class YandexPostTest extends BaseTest {
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
 
-        yandexMainPage.clicktLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToPassportTab();
+        yandexMainPage.clickLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToNewTab();
         yandexAuthorizationsPage.putLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.putPassword();
@@ -69,8 +69,8 @@ public class YandexPostTest extends BaseTest {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
 
-        yandexMainPage.clicktLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToPassportTab();
+        yandexMainPage.clickLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToNewTab();
         yandexAuthorizationsPage.putLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.putWrongPassword();
@@ -85,10 +85,19 @@ public class YandexPostTest extends BaseTest {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
 
-        yandexMainPage.clicktLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToPassportTab();
+        yandexMainPage.clickLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToNewTab();
         yandexAuthorizationsPage.putWrongLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.checkWrongAccountMessage();
+    }
+
+    @Description("navigation links test")
+    @Test
+    @TmsLink("5")
+    public void navigationLinksTest() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+
+        yandexMainPage.checkNewTab();
     }
 }
