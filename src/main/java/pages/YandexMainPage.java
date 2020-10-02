@@ -39,12 +39,14 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
             new WebDriverWait(driver, 20)
                     .withMessage("a new tab is not opened")
                     .until(ExpectedConditions.urlContains(someLink.toString()));
+            softAssert.assertTrue(driver.getTitle().equals(someLink.getTitle()), "the: '" + driver.getTitle() +
+                    "' is not equals to '" + someLink.getTitle() + "'\n");
             String currentUrl = driver.getCurrentUrl();
             softAssert.assertTrue(currentUrl.contains(someLink.toString()), "tab+ " + currentUrl + " opened");
             driver.close();
             driver.switchTo().window(tabs.get(0));
-            softAssert.assertAll();
         }
+        softAssert.assertAll();
     }
 }
 
