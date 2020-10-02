@@ -23,7 +23,10 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     @FindBy(className = "b-langs")
     WebElement langButton;
 
-    @FindBy(xpath = "//div[7]/ul//span")
+    @FindBy(xpath = "//a[starts-with(@class,'menu__item')]/span[contains(text(), 'ещё')]")
+    WebElement moreButton;
+
+    @FindBy(xpath = "//li[@class='menu__list-item']")
     List<WebElement> langMenu;
 
     @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
@@ -71,8 +74,8 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     }
 
     @Step("checking languages")
-    public void checkLanguages() {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfAllElements(langMenu));
+    public void checkLanguages() throws InterruptedException {
+        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(moreButton));
         int langMenuSize = langMenu.size();
         for (int i = 0; i < langMenuSize; i++) {
             String elementLanguage = langMenu.get(i).getText();
@@ -93,7 +96,7 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
 
     @Step("put London into the location field")
     public void putLondon() {
-        System.out.println("Значение поля: "+cityChangeField.getAttribute("value"));
+        System.out.println("Значение поля: " + cityChangeField.getAttribute("value"));
         cityChangeField.sendKeys("value", "Kiev");
         putTextIntoField(cityChangeField, "London");
     }

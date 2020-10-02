@@ -1,9 +1,11 @@
 package test;
 
 import com.sun.org.glassfish.gmbal.Description;
+import core.ListenerITest;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.YandexAuthorizationsPage;
 import pages.YandexLanguagePage;
@@ -12,6 +14,7 @@ import pages.YandexMainPage;
 
 import static data.YandexConstants.BASE_URL;
 
+@Listeners({ListenerITest.class})
 public class YandexPostTest extends BaseTest {
 
     @BeforeMethod
@@ -103,9 +106,9 @@ public class YandexPostTest extends BaseTest {
     }
 
     @Description("navigation links test")
-    @Test
+    @Test(invocationCount = 5)
     @TmsLink("6")
-    public void checkSwitchEnglishTest() {
+    public void checkSwitchEnglishTest() throws InterruptedException {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexLanguagePage yandexLanguagePage = new YandexLanguagePage(driver);
 
