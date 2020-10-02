@@ -34,9 +34,9 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     WebElement loginButton;
 
     @Step("switch to the new log-in passport tab ")
-    public void switchToPassportTab() {
+    public void switchToNewTab() {
         Set<String> availableTabWindows = driver.getWindowHandles();
-        if (availableTabWindows.size() != 1)
+        if (availableTabWindows.size() > 1)
             for (String tabName : availableTabWindows)
                 driver.switchTo().window(tabName);
     }
