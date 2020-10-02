@@ -23,4 +23,12 @@ public interface JsActions {
         js.executeScript(javascript, element);
 
     }
+
+    default void setWebElementAttributeWithJs(WebDriver driver, WebElement element, String attribute){
+        String javascript ="arguments[0]..setAttribute(arguments[1], arguments[2]);" ;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(javascript, element);
+
+    }
+
 }

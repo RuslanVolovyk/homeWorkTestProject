@@ -29,6 +29,15 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
     WebElement linkToPost;
 
+    @FindBy(className = "geolink")
+    WebElement geolinkSwich;
+
+    @FindBy(xpath = "//input[@id='city__front-input']")
+    WebElement cityChangeField;
+
+    @FindBy(linkText = "Save")
+    WebElement saveButton;
+
     @Step("clicking on the link to the post authorization page")
     public void clickLinkToPostByMouse() {
         clickOnMouse(linkToPost);
@@ -76,7 +85,25 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
                 clickOnMouse(langMenu.get(i));
         }
     }
+
+    @Step("clicking on geolink")
+    public void clickOnGeolink() {
+        clickOnMouse(geolinkSwich);
+    }
+
+    @Step("put London into the location field")
+    public void putLondon() {
+        System.out.println("Значение поля: "+cityChangeField.getAttribute("value"));
+        cityChangeField.sendKeys("value", "Kiev");
+        putTextIntoField(cityChangeField, "London");
+    }
+
+    @Step("clicking on the save button")
+    public void clickOnSaveButton() {
+        clickOnMouse(saveButton);
+    }
 }
+
 
 
 

@@ -116,4 +116,14 @@ public class YandexPostTest extends BaseTest {
         yandexLanguagePage.clickSaveButton();
         yandexLanguagePage.checkInterfaceLanguage();
     }
+
+    @Description("navigation links test")
+    @Test
+    @TmsLink("7")
+    public void checkElseContentTest() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        yandexMainPage.clickOnGeolink();
+        yandexMainPage.putLondon();
+        yandexMainPage.clickOnSaveButton();
+    }
 }

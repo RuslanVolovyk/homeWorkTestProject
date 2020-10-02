@@ -57,5 +57,4 @@ public class UkrNetMainPage extends PageObjectCreator implements ClickOn {
         System.out.println("User name is: " + userId.getText());
         Assert.assertTrue(userId.getText().contains(NAME), "The user is not " + NAME);
     }
-
 }
