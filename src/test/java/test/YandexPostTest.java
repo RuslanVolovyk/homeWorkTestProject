@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.YandexAuthorizationsPage;
+import pages.YandexLanguagePage;
 import pages.YandexMailPage;
 import pages.YandexMainPage;
 
@@ -99,5 +100,20 @@ public class YandexPostTest extends BaseTest {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
 
         yandexMainPage.checkNewTab();
+    }
+
+    @Description("navigation links test")
+    @Test
+    @TmsLink("6")
+    public void checkSwitchEnglishTest() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexLanguagePage yandexLanguagePage = new YandexLanguagePage(driver);
+
+        yandexMainPage.checkSwitchEnglish();
+        yandexMainPage.checkLanguages();
+        yandexLanguagePage.clickOnLanguageButton();
+        yandexLanguagePage.selectEnglish();
+        yandexLanguagePage.clickSaveButton();
+        yandexLanguagePage.checkInterfaceLanguage();
     }
 }

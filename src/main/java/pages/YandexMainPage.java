@@ -12,12 +12,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class YandexMainPage extends PageObjectCreator implements ClickOn {
 
     public YandexMainPage(WebDriver driver) {
         super(driver);
     }
+
+    @FindBy(className = "b-langs")
+    WebElement langButton;
+
+    @FindBy(xpath = "//div[7]/ul//span")
+    List<WebElement> langMenu;
 
     @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
     WebElement linkToPost;
@@ -47,6 +54,27 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
             driver.switchTo().window(tabs.get(0));
         }
         softAssert.assertAll();
+    }
+
+    @Step("clicking on the language button")
+    public void checkSwitchEnglish() {
+        clickOnMouse(langButton);
+    }
+
+    @Step("checking languages")
+    public void checkLanguages() {
+        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfAllElements(langMenu));
+        int langMenuSize = langMenu.size();
+        for (int i = 0; i < langMenuSize; i++) {
+            String elementLanguage = langMenu.get(i).getText();
+
+            if (elementLanguage.contains("En")) {
+                clickOnMouse(langMenu.get(i));
+                break;
+            }
+            if (i == langMenuSize - 1)
+                clickOnMouse(langMenu.get(i));
+        }
     }
 }
 
