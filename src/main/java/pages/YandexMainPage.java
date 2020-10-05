@@ -23,7 +23,7 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     @FindBy(className = "b-langs")
     WebElement langButton;
 
-    @FindBy(xpath = "//body/div/ul//li[@class='menu__list-item']")
+    @FindBy(xpath = "//ul//a[contains(@href, 'lang')]/span")
     List<WebElement> langMenu;
 
     @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
@@ -103,7 +103,8 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     }
 }
 
-
+//ul//a[contains(@href, 'lang')]/span
+//a[contains(@id,'uniq')]/span
 
 
 
