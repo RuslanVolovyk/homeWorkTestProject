@@ -108,7 +108,7 @@ public class YandexPostTest extends BaseTest {
     @Description("navigation links test")
     @Test(invocationCount = 5)
     @TmsLink("6")
-    public void checkSwitchEnglishTest() throws InterruptedException {
+    public void checkSwitchEnglishTest() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexLanguagePage yandexLanguagePage = new YandexLanguagePage(driver);
 

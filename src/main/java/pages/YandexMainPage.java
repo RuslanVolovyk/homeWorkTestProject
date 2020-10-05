@@ -23,10 +23,7 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     @FindBy(className = "b-langs")
     WebElement langButton;
 
-    @FindBy(xpath = "//a[starts-with(@class,'menu__item')]/span[contains(text(), 'ещё')]")
-    WebElement moreButton;
-
-    @FindBy(xpath = "//li[@class='menu__list-item']")
+    @FindBy(xpath = "//body/div/ul//li[@class='menu__list-item']")
     List<WebElement> langMenu;
 
     @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
@@ -74,12 +71,11 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     }
 
     @Step("checking languages")
-    public void checkLanguages() throws InterruptedException {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(moreButton));
+    public void checkLanguages() {
+        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfAllElements(langMenu));
         int langMenuSize = langMenu.size();
         for (int i = 0; i < langMenuSize; i++) {
             String elementLanguage = langMenu.get(i).getText();
-
             if (elementLanguage.contains("En")) {
                 clickOnMouse(langMenu.get(i));
                 break;
