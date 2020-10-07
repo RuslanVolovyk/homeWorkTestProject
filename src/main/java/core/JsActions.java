@@ -21,21 +21,18 @@ public interface JsActions {
         String javascript = "arguments[0].value ='" + text + "';";
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(javascript, element, text);
-
     }
 
-    default void setWebElementAttributeWithJs(WebDriver driver,WebElement element,
+    default void setWebElementAttributeWithJs(WebDriver driver, WebElement element,
                                               String attributeName, String attributeValue) {
         String javascript = "arguments[1].setAttribute(arguments[2], arguments[3]);";
-//        String javascript = "document.getElementById('city__front-input').setAttribute('value', 'London');";
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript(javascript, element, attributeName,attributeValue);
+        js.executeScript(javascript, element, attributeName, attributeValue);
     }
 
-    default void removeWebElementAttributeWithJs(WebDriver driver,WebElement element,
-                                              String attributeName) {
+    default void removeWebElementAttributeWithJs(WebDriver driver, WebElement element,
+                                                 String attributeName) {
         String javascript = "arguments[1].removeAttribute(arguments[2]);";
-
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(javascript, element, attributeName);
     }

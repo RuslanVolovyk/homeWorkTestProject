@@ -42,7 +42,6 @@ public class MultiToneChrome extends WebDriverOptions {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/web-drivers/chromedriver");
         driver = new ChromeDriver(getChromeOptions());
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
         return driver;
     }
 }

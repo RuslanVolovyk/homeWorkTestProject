@@ -24,8 +24,6 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
         super(driver);
     }
 
-    String londonMore, parisMore;
-
     @FindBy(className = "b-langs")
     WebElement langButton;
 
@@ -46,6 +44,12 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
 
     @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]/div[@class='services-new__item-title']")
     List<WebElement> moreList;
+
+    @FindBy(xpath = "//div[contains(text(),'Лондон')]")
+    WebElement selectLondon;
+
+    @FindBy(xpath = "//div[contains(text(),'Париж')]")
+    WebElement selectParis;
 
     @Step("clicking on the link to the post authorization page")
     public void clickLinkToPostByMouse() {
@@ -105,18 +109,22 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     }
 
     @Step("put London into the location field")
-    public void putLondon() throws InterruptedException {
+    public void putLondon() {
         cityChangeField.clear();
         putTextIntoField(cityChangeField, "Лондон В");
-        Thread.sleep(3000);
+        new WebDriverWait(driver, 10)
+                .withMessage("a popup list is not shown ")
+                .until(ExpectedConditions.elementToBeClickable(selectLondon));
         new Actions(driver).moveToElement(cityChangeField).sendKeys(Keys.ENTER).perform();
     }
 
     @Step("put Paris into the location field")
-    public void putParis() throws InterruptedException {
+    public void putParis() {
         cityChangeField.clear();
         putTextIntoField(cityChangeField, "Париж Ф");
-        Thread.sleep(3000);
+        new WebDriverWait(driver, 10)
+                .withMessage("a popup list is not shown ")
+                .until(ExpectedConditions.elementToBeClickable(selectParis));
         new Actions(driver).moveToElement(cityChangeField).sendKeys(Keys.ENTER).perform();
     }
 
@@ -126,27 +134,17 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     }
 
     @Step("get the list of addition services")
-    public void getList() {
+    public String getStringListMoreElements() {
         StringBuffer listMoreLocation = new StringBuffer();
-        for (WebElement moreElement : moreList) {
-            listMoreLocation.append(moreElement.getText());
-        }
-        londonMore = listMoreLocation.toString();
-        System.out.println("Лондон: " + londonMore);
-    }
 
-    @Step("get the list of addition services")
-    public void getList2() {
-        StringBuffer listMoreLocation = new StringBuffer();
         for (WebElement moreElement : moreList) {
             listMoreLocation.append(moreElement.getText());
         }
-        parisMore = listMoreLocation.toString();
-        System.out.println("Париж : " + parisMore);
+        return listMoreLocation.toString();
     }
 
     @Step("check the more lists of London and Paris")
-    public void checkLists() {
-        Assert.assertEquals(parisMore, londonMore, "The more lists are not equal!");
+    public void checkLists(String location1, String location2) {
+        Assert.assertEquals(location1, location2, "The more lists are not equal!");
     }
 }

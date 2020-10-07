@@ -1,11 +1,9 @@
 package test;
 
 import com.sun.org.glassfish.gmbal.Description;
-import core.ListenerITest;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.YandexAuthorizationsPage;
 import pages.YandexLanguagePage;
@@ -14,7 +12,6 @@ import pages.YandexMainPage;
 
 import static data.YandexConstants.BASE_URL;
 
-@Listeners({ListenerITest.class})
 public class YandexPostTest extends BaseTest {
 
     @BeforeMethod
@@ -105,7 +102,7 @@ public class YandexPostTest extends BaseTest {
     }
 
     @Description("navigation links test")
-    @Test(invocationCount = 5)
+    @Test
     @TmsLink("6")
     public void checkSwitchEnglishTest() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
@@ -117,19 +114,20 @@ public class YandexPostTest extends BaseTest {
     }
 
     @Description("navigation links test")
-    @Test(invocationCount = 10)
+    @Test
     @TmsLink("7")
-    public void checkElseContentTest() throws InterruptedException {
+    public void checkElseContentTest() {
+        String londonMore, parisMore;
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
 
         yandexMainPage.clickOnGeolink();
         yandexMainPage.putLondon();
         yandexMainPage.clickOnMorelink();
-        yandexMainPage.getList();
+        londonMore = yandexMainPage.getStringListMoreElements();
         yandexMainPage.clickOnGeolink();
         yandexMainPage.putParis();
         yandexMainPage.clickOnMorelink();
-        yandexMainPage.getList2();
-        yandexMainPage.checkLists();
+        parisMore = yandexMainPage.getStringListMoreElements();
+        yandexMainPage.checkLists(londonMore, parisMore);
     }
 }
