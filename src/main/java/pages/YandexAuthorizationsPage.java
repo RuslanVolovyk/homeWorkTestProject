@@ -95,8 +95,4 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
         softAssert.assertEquals(getElementValue(errorMessage), "Такого аккаунта нет", "Error message is different");
         softAssert.assertAll();
     }
-
-    String getElementValue(WebElement element) {
-        return element.getText();
-    }
 }

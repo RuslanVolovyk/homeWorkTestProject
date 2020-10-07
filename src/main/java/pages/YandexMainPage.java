@@ -1,42 +1,51 @@
 package pages;
 
 import core.ClickOn;
+import core.JsActions;
 import data.NavigationLinksUrlsYandex;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class YandexMainPage extends PageObjectCreator implements ClickOn {
+public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions {
 
     public YandexMainPage(WebDriver driver) {
         super(driver);
     }
 
+    String londonMore, parisMore;
+
     @FindBy(className = "b-langs")
     WebElement langButton;
 
-    @FindBy(xpath = "//ul//a[contains(@href, 'lang')]/span")
+    @FindBy(xpath = "//*[@class='menu__list-item']//a[contains(@href, 'lang')]/span")
     List<WebElement> langMenu;
 
     @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
     WebElement linkToPost;
 
     @FindBy(className = "geolink")
-    WebElement geolinkSwich;
+    WebElement geolinkSwitch;
 
-    @FindBy(xpath = "//input[@id='city__front-input']")
+    @FindBy(id = "city__front-input")
     WebElement cityChangeField;
 
-    @FindBy(linkText = "Save")
-    WebElement saveButton;
+    @FindBy(xpath = "//a[@data-id='more']")
+    WebElement moreLink;
+
+    @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]/div[@class='services-new__item-title']")
+    List<WebElement> moreList;
 
     @Step("clicking on the link to the post authorization page")
     public void clickLinkToPostByMouse() {
@@ -80,31 +89,64 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
                 clickOnMouse(langMenu.get(i));
                 break;
             }
-            if (i == langMenuSize - 1)
+            if (i == langMenuSize - 1) {
                 clickOnMouse(langMenu.get(i));
+                YandexLanguagePage yandexLanguagePage = new YandexLanguagePage(driver);
+                yandexLanguagePage.clickOnLanguageButton();
+                yandexLanguagePage.selectEnglish();
+                yandexLanguagePage.clickSaveButton();
+            }
         }
     }
 
     @Step("clicking on geolink")
     public void clickOnGeolink() {
-        clickOnMouse(geolinkSwich);
+        clickOnMouse(geolinkSwitch);
     }
 
     @Step("put London into the location field")
-    public void putLondon() {
-        System.out.println("Значение поля: " + cityChangeField.getAttribute("value"));
-        cityChangeField.sendKeys("value", "Kiev");
-        putTextIntoField(cityChangeField, "London");
+    public void putLondon() throws InterruptedException {
+        cityChangeField.clear();
+        putTextIntoField(cityChangeField, "Лондон В");
+        Thread.sleep(3000);
+        new Actions(driver).moveToElement(cityChangeField).sendKeys(Keys.ENTER).perform();
     }
 
-    @Step("clicking on the save button")
-    public void clickOnSaveButton() {
-        clickOnMouse(saveButton);
+    @Step("put Paris into the location field")
+    public void putParis() throws InterruptedException {
+        cityChangeField.clear();
+        putTextIntoField(cityChangeField, "Париж Ф");
+        Thread.sleep(3000);
+        new Actions(driver).moveToElement(cityChangeField).sendKeys(Keys.ENTER).perform();
+    }
+
+    @Step("clicking on morelink")
+    public void clickOnMorelink() {
+        clickOnMouse(moreLink);
+    }
+
+    @Step("get the list of addition services")
+    public void getList() {
+        StringBuffer listMoreLocation = new StringBuffer();
+        for (WebElement moreElement : moreList) {
+            listMoreLocation.append(moreElement.getText());
+        }
+        londonMore = listMoreLocation.toString();
+        System.out.println("Лондон: " + londonMore);
+    }
+
+    @Step("get the list of addition services")
+    public void getList2() {
+        StringBuffer listMoreLocation = new StringBuffer();
+        for (WebElement moreElement : moreList) {
+            listMoreLocation.append(moreElement.getText());
+        }
+        parisMore = listMoreLocation.toString();
+        System.out.println("Париж : " + parisMore);
+    }
+
+    @Step("check the more lists of London and Paris")
+    public void checkLists() {
+        Assert.assertEquals(parisMore, londonMore, "The more lists are not equal!");
     }
 }
-
-//ul//a[contains(@href, 'lang')]/span
-//a[contains(@id,'uniq')]/span
-
-
-

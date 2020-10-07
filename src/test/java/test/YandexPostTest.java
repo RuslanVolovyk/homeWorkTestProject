@@ -101,7 +101,6 @@ public class YandexPostTest extends BaseTest {
     @TmsLink("5")
     public void navigationLinksTest() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
-
         yandexMainPage.checkNewTab();
     }
 
@@ -114,19 +113,23 @@ public class YandexPostTest extends BaseTest {
 
         yandexMainPage.checkSwitchEnglish();
         yandexMainPage.checkLanguages();
-        yandexLanguagePage.clickOnLanguageButton();
-        yandexLanguagePage.selectEnglish();
-        yandexLanguagePage.clickSaveButton();
         yandexLanguagePage.checkInterfaceLanguage();
     }
 
     @Description("navigation links test")
-    @Test
+    @Test(invocationCount = 10)
     @TmsLink("7")
-    public void checkElseContentTest() {
+    public void checkElseContentTest() throws InterruptedException {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
+
         yandexMainPage.clickOnGeolink();
         yandexMainPage.putLondon();
-        yandexMainPage.clickOnSaveButton();
+        yandexMainPage.clickOnMorelink();
+        yandexMainPage.getList();
+        yandexMainPage.clickOnGeolink();
+        yandexMainPage.putParis();
+        yandexMainPage.clickOnMorelink();
+        yandexMainPage.getList2();
+        yandexMainPage.checkLists();
     }
 }
