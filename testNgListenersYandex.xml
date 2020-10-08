@@ -8,6 +8,8 @@
     <test name="Yandex1">
         <classes>
             <class name="test.YandexPostTest"/>
+            <class name="test.GoToBBSSiteTest"/>
+            <class name="test.UkrNetLogInPositive"/>
         </classes>
     </test>
 </suite>
