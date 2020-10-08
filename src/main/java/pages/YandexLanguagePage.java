@@ -41,6 +41,7 @@ public class YandexLanguagePage extends PageObjectCreator implements ClickOn {
 
     @Step("check the interface language")
     public void checkInterfaceLanguage() {
-        Assert.assertTrue(htmlAttribute.getText().contains("English"), "the interface language is not English");
+        Assert.assertTrue(getElementValue(htmlAttribute).contains("English"),
+                "the interface language is not English");
     }
 }

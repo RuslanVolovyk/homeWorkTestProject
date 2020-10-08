@@ -98,7 +98,6 @@ public class YandexPostTest extends BaseTest {
     @TmsLink("5")
     public void navigationLinksTest() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
-
         yandexMainPage.checkNewTab();
     }
 
@@ -111,9 +110,24 @@ public class YandexPostTest extends BaseTest {
 
         yandexMainPage.checkSwitchEnglish();
         yandexMainPage.checkLanguages();
-        yandexLanguagePage.clickOnLanguageButton();
-        yandexLanguagePage.selectEnglish();
-        yandexLanguagePage.clickSaveButton();
         yandexLanguagePage.checkInterfaceLanguage();
+    }
+
+    @Description("navigation links test")
+    @Test
+    @TmsLink("7")
+    public void checkElseContentTest() {
+        String londonMore, parisMore;
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+
+        yandexMainPage.clickOnGeolink();
+        yandexMainPage.putLondon();
+        yandexMainPage.clickOnMorelink();
+        londonMore = yandexMainPage.getStringListMoreElements();
+        yandexMainPage.clickOnGeolink();
+        yandexMainPage.putParis();
+        yandexMainPage.clickOnMorelink();
+        parisMore = yandexMainPage.getStringListMoreElements();
+        yandexMainPage.checkLists(londonMore, parisMore);
     }
 }

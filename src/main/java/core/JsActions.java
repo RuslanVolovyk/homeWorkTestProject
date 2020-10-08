@@ -12,15 +12,29 @@ public interface JsActions {
         return (WebElement) js.executeScript(javascript);
     }
 
-    default void clickLeftMouseWithJs(WebDriver driver, WebElement element){
+    default void clickLeftMouseWithJs(WebDriver driver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }
 
-    default void inputTextWithJs(WebDriver driver, WebElement element, String text){
-        String javascript ="arguments[0].value ='"+text+"';" ;
+    default void inputTextWithJs(WebDriver driver, WebElement element, String text) {
+        String javascript = "arguments[0].value ='" + text + "';";
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript(javascript, element);
+        js.executeScript(javascript, element, text);
+    }
 
+    default void setWebElementAttributeWithJs(WebDriver driver, WebElement element,
+                                              String attributeName, String attributeValue) {
+        String javascript = "arguments[1].setAttribute(arguments[2], arguments[3]);";
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(javascript, element, attributeName, attributeValue);
+    }
+
+    default void removeWebElementAttributeWithJs(WebDriver driver, WebElement element,
+                                                 String attributeName) {
+        String javascript = "arguments[1].removeAttribute(arguments[2]);";
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(javascript, element, attributeName);
     }
 }
+

@@ -1,20 +1,24 @@
 package pages;
 
 import core.ClickOn;
+import core.JsActions;
 import data.NavigationLinksUrlsYandex;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class YandexMainPage extends PageObjectCreator implements ClickOn {
+public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions {
 
     public YandexMainPage(WebDriver driver) {
         super(driver);
@@ -23,11 +27,29 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
     @FindBy(className = "b-langs")
     WebElement langButton;
 
-    @FindBy(xpath = "//div[7]/ul//span")
+    @FindBy(xpath = "//*[@class='menu__list-item']//a[contains(@href, 'lang')]/span")
     List<WebElement> langMenu;
 
     @FindBy(xpath = "//a[contains(@class, 'home-link_bold_yes')]")
     WebElement linkToPost;
+
+    @FindBy(className = "geolink")
+    WebElement geolinkSwitch;
+
+    @FindBy(id = "city__front-input")
+    WebElement cityChangeField;
+
+    @FindBy(xpath = "//a[@data-id='more']")
+    WebElement moreLink;
+
+    @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]/div[@class='services-new__item-title']")
+    List<WebElement> moreList;
+
+    @FindBy(xpath = "//div[contains(text(),'Лондон')]")
+    WebElement selectLondon;
+
+    @FindBy(xpath = "//div[contains(text(),'Париж')]")
+    WebElement selectParis;
 
     @Step("clicking on the link to the post authorization page")
     public void clickLinkToPostByMouse() {
@@ -67,17 +89,62 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn {
         int langMenuSize = langMenu.size();
         for (int i = 0; i < langMenuSize; i++) {
             String elementLanguage = langMenu.get(i).getText();
-
             if (elementLanguage.contains("En")) {
                 clickOnMouse(langMenu.get(i));
                 break;
             }
-            if (i == langMenuSize - 1)
+            if (i == langMenuSize - 1) {
                 clickOnMouse(langMenu.get(i));
+                YandexLanguagePage yandexLanguagePage = new YandexLanguagePage(driver);
+                yandexLanguagePage.clickOnLanguageButton();
+                yandexLanguagePage.selectEnglish();
+                yandexLanguagePage.clickSaveButton();
+            }
         }
     }
+
+    @Step("clicking on geolink")
+    public void clickOnGeolink() {
+        clickOnMouse(geolinkSwitch);
+    }
+
+    @Step("put London into the location field")
+    public void putLondon() {
+        cityChangeField.clear();
+        putTextIntoField(cityChangeField, "Лондон В");
+        new WebDriverWait(driver, 10)
+                .withMessage("a popup list is not shown ")
+                .until(ExpectedConditions.elementToBeClickable(selectLondon));
+        new Actions(driver).moveToElement(cityChangeField).sendKeys(Keys.ENTER).perform();
+    }
+
+    @Step("put Paris into the location field")
+    public void putParis() {
+        cityChangeField.clear();
+        putTextIntoField(cityChangeField, "Париж Ф");
+        new WebDriverWait(driver, 10)
+                .withMessage("a popup list is not shown ")
+                .until(ExpectedConditions.elementToBeClickable(selectParis));
+        new Actions(driver).moveToElement(cityChangeField).sendKeys(Keys.ENTER).perform();
+    }
+
+    @Step("clicking on morelink")
+    public void clickOnMorelink() {
+        clickOnMouse(moreLink);
+    }
+
+    @Step("get the list of addition services")
+    public String getStringListMoreElements() {
+        StringBuffer listMoreLocation = new StringBuffer();
+
+        for (WebElement moreElement : moreList) {
+            listMoreLocation.append(moreElement.getText());
+        }
+        return listMoreLocation.toString();
+    }
+
+    @Step("check the more lists of London and Paris")
+    public void checkLists(String location1, String location2) {
+        Assert.assertEquals(location1, location2, "The more lists are not equal!");
+    }
 }
-
-
-
-
