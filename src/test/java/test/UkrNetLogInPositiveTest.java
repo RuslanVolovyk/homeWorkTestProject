@@ -9,7 +9,7 @@ import pages.UkrNetMainPage;
 
 import static data.UkrNetConstans.*;
 
-public class UkrNetLogInPositive extends BaseTest{
+public class UkrNetLogInPositiveTest extends BaseTest {
 
     @BeforeMethod
     public void openSite() {
@@ -32,8 +32,6 @@ public class UkrNetLogInPositive extends BaseTest{
         pageUkr.leftMouseClickOnButtonIn();
         pageUkr.checkUserName();
     }
-
-
 }
 
 

@@ -7,7 +7,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.*;
 
-
 public class ListenerITest implements ITestListener {
     @Override
     public void onTestStart(ITestResult result) {

@@ -28,7 +28,6 @@ public class YandexPostTest extends BaseTest {
     @Test
     @TmsLink("1")
     public void logInPostAccount() {
-
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
@@ -46,7 +45,6 @@ public class YandexPostTest extends BaseTest {
     @Test
     @TmsLink("2")
     public void logInAndOutPostAccount() {
-
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
@@ -98,6 +96,7 @@ public class YandexPostTest extends BaseTest {
     @TmsLink("5")
     public void navigationLinksTest() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
+
         yandexMainPage.checkNewTab();
     }
 
@@ -123,7 +122,7 @@ public class YandexPostTest extends BaseTest {
         yandexMainPage.clickOnGeolink();
         yandexMainPage.putLondon();
         yandexMainPage.clickOnMorelink();
-        londonMore = yandexMainPage.getStringListMoreElements();
+        londonMore = yandexMainPage.getStringListMoreElements() + "1";
         yandexMainPage.clickOnGeolink();
         yandexMainPage.putParis();
         yandexMainPage.clickOnMorelink();

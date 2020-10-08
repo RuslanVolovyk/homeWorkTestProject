@@ -10,13 +10,11 @@ import pages.BbcSearchPage;
 
 import static data.BbsConstants.BASE_URL;
 
-
 public class GoToBBSSiteTest extends BaseTest {
 
     @BeforeMethod
     public void openSite() {
         setUp().get(BASE_URL);
-
     }
 
     @AfterMethod
