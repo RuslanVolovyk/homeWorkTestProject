@@ -1,6 +1,7 @@
 package pages;
 
 import core.ClickOn;
+import core.Helper;
 import core.JsActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ import org.testng.asserts.SoftAssert;
 
 import static data.YandexConstants.*;
 
-public class YandexAuthorizationsPage extends PageObjectCreator implements ClickOn, JsActions {
+public class YandexAuthorizationsPage extends PageObjectCreator implements ClickOn, JsActions, Helper {
 
     public YandexAuthorizationsPage(WebDriver driver) {
         super(driver);
@@ -33,7 +34,7 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
 
     @Step("switch to the new log-in passport tab ")
     public void switchToTheLastTab() {
-        switchToTheLastTab();
+        switchToTheLastTab(driver);
     }
 
     @Step("clicking on the log-in button")

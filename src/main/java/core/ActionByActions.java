@@ -10,4 +10,10 @@ public interface ActionByActions {
         Actions act = new Actions(driver);
         act.click(element).perform();
     }
+
+    default void hoverMouseAboveElement(WebDriver driver, WebElement element) {
+        Actions act = new Actions(driver);
+        act.moveToElement(element).build().perform();
+    }
 }
+

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import static data.YandexConstants.BASE_URL;
 
 public class YandexPool2Test extends BaseTest {
+
     @BeforeMethod
     public void openSite() {
         setUp().get(BASE_URL);
@@ -26,17 +27,18 @@ public class YandexPool2Test extends BaseTest {
     @Test
     @TmsLink("8")
     public void addingToComparison() {
-        int number = 3;
+        int numberItemsForComparison = 3;
+        String searchedItem ="Note 8";
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
 
         yandexMainPage.clickOnMarketLink();
         yandexMainPage.switchToTheMarketTab();
-        yandexMarketPage.putNote8InSearchField();
+        yandexMarketPage.putWordInSearchField(searchedItem);
         yandexMarketPage.clickOnSubmitButton();
-        ArrayList<String> selectedItems = yandexMarketPage.putItemsToComparison(number);
+        ArrayList<String> expectedItems = yandexMarketPage.getListItemsForComparison(numberItemsForComparison);
         yandexMarketPage.clickOnCompareButton();
-        ArrayList<String> comparedItems = yandexMarketPage.checkComparedItems(number);
-        yandexMarketPage.checkComparedItems(selectedItems, comparedItems);
+        ArrayList<String> actualItems = yandexMarketPage.getListComparedItems(numberItemsForComparison);
+        yandexMarketPage.checkComparedItems(expectedItems, actualItems);
     }
 }

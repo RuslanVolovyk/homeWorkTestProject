@@ -1,6 +1,7 @@
 package pages;
 
 import core.ClickOn;
+import core.Helper;
 import core.JsActions;
 import data.NavigationLinksUrlsYandex;
 import io.qameta.allure.Step;
@@ -18,7 +19,7 @@ import org.testng.asserts.SoftAssert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions {
+public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions, Helper {
 
     public YandexMainPage(WebDriver driver) {
         super(driver);
@@ -158,7 +159,6 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
 
     @Step("switch to the market tab")
     public void switchToTheMarketTab() {
-       switchToTheLastTab();
+       switchToTheLastTab(driver);
     }
-
 }
