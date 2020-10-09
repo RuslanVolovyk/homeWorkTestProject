@@ -24,6 +24,9 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
         super(driver);
     }
 
+    @FindBy(xpath = "//a[@data-id ='market']")
+    WebElement marketLink;
+
     @FindBy(className = "b-langs")
     WebElement langButton;
 
@@ -147,4 +150,15 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     public void checkLists(String location1, String location2) {
         Assert.assertEquals(location1, location2, "The more lists are not equal!");
     }
+
+    @Step("click on the market link")
+    public void clickOnMarketLink() {
+        clickOnMouse(marketLink);
+    }
+
+    @Step("switch to the market tab")
+    public void switchToTheMarketTab() {
+       switchToTheLastTab();
+    }
+
 }

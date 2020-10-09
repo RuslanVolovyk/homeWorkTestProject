@@ -11,8 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import java.util.Set;
-
 import static data.YandexConstants.*;
 
 public class YandexAuthorizationsPage extends PageObjectCreator implements ClickOn, JsActions {
@@ -34,11 +32,8 @@ public class YandexAuthorizationsPage extends PageObjectCreator implements Click
     WebElement loginButton;
 
     @Step("switch to the new log-in passport tab ")
-    public void switchToNewTab() {
-        Set<String> availableTabWindows = driver.getWindowHandles();
-        if (availableTabWindows.size() > 1)
-            for (String tabName : availableTabWindows)
-                driver.switchTo().window(tabName);
+    public void switchToTheLastTab() {
+        switchToTheLastTab();
     }
 
     @Step("clicking on the log-in button")
