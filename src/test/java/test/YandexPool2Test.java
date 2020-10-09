@@ -28,7 +28,7 @@ public class YandexPool2Test extends BaseTest {
     @TmsLink("8")
     public void addingToComparison() {
         int numberItemsForComparison = 3;
-        String searchedItem ="Note 8";
+        String searchedItem = "Note 8";
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
 

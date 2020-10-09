@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.*;
 
 public class ListenerITest implements ITestListener {
+
     @Override
     public void onTestStart(ITestResult result) {
         System.out.println("Now starting test " + result.getName());
@@ -24,7 +25,6 @@ public class ListenerITest implements ITestListener {
         System.out.println("*** execution of: " + result.getMethod().getMethodName() + " failed!");
         saveScreenShot(MultiToneChrome.getInstance().driver);
         MultiToneChrome.getInstance().destroy();
-
     }
 
     @Override

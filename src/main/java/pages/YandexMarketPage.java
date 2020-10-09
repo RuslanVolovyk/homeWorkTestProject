@@ -54,7 +54,6 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @Step("put a number of first items to comparison")
     public ArrayList<String> getListItemsForComparison(int number) {
-
         ArrayList<String> selectedFor = new ArrayList<>();
 
         for (int i = 0; i < number; i++) {
