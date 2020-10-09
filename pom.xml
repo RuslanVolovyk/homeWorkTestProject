@@ -7,40 +7,36 @@
     <groupId>test-project</groupId>
     <artifactId>test-project</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <properties>
-        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
-        <aspectj.version>1.8.10</aspectj.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
-                <configuration>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
                 <configuration>
                     <source>8</source>
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testNgListenersYandex.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+    <properties>
+        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
@@ -48,24 +44,17 @@
             <artifactId>commons-io</artifactId>
             <version>2.7</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.13.5</version>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.8</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-support</artifactId>
+            <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -80,8 +69,14 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8</version>
+            <version>6.10</version>
             <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>3.141.59</version>
         </dependency>
     </dependencies>
 </project>

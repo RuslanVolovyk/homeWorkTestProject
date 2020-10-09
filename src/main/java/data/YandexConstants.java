@@ -7,5 +7,4 @@ public class YandexConstants {
     public static final String WRONGLOGIN = "NOandersentester";
     public static final String PASSWORD = "password123";
     public static final String WRONGPASSWORD = "NOpassword123";
-
 }
