@@ -5,16 +5,19 @@
         <listener class-name="core.ListenerITest"/>
     </listeners>
 
+    <parameter name="searchedItem" value="Note 8"/>
+    <parameter name="numberItemsForComparison" value="3"/>
+
     <test name="Yandex.by tests">
         <classes>
             <class name="test.YandexPool2Test">
-<!--            <class name="test.YandexPool1Test">-->
-<!--                <methods>-->
-<!--                    <include name="logInAndOutPostAccount"/>-->
-<!--                </methods>-->
+                <!--            <class name="test.YandexPool1Test">-->
+                <!--                <methods>-->
+                <!--                    <include name="logInAndOutPostAccount"/>-->
+                <!--                </methods>-->
             </class>
-<!--            <class name="test.GoToBBSSiteTest"/>-->
-<!--            <class name="test.UkrNetLogInPositiveTest"/>-->
+            <!--            <class name="test.GoToBBSSiteTest"/>-->
+            <!--            <class name="test.UkrNetLogInPositiveTest"/>-->
         </classes>
     </test>
 </suite>

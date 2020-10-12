@@ -5,6 +5,7 @@ import core.ClickOn;
 import core.Helper;
 import io.qameta.allure.Step;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -33,14 +34,16 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @FindBy(xpath = "//div[contains(@aria-label, 'сравнению')]")
     WebElement foundedComparisonButtons;
 
-    @FindBy(xpath = "//a[contains(@href, '/product') and contains(@title,'Смарт')]")
-    List<WebElement> foundedItems;
-
     @FindBy(xpath = "//a[contains(@href,'product')]")
     List<WebElement> comparedItems;
 
     @FindBy(partialLinkText = "Сравнить")
     WebElement compareButton;
+
+    public List<WebElement> foundedItems(String description) {
+        return driver.findElements(By.xpath("//a[contains(@href, '/product') and contains(@title,'" + description +
+                "')]"));
+    }
 
     @Step("put Note 8 into the search field")
     public void putWordInSearchField(String searchText) {
@@ -53,9 +56,9 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     }
 
     @Step("put a number of first items to comparison")
-    public ArrayList<String> getListItemsForComparison(int number) {
+    public ArrayList<String> getListItemsForComparison(int number, String description) {
         ArrayList<String> selectedFor = new ArrayList<>();
-
+        List<WebElement> foundedItems = foundedItems(description);
         for (int i = 0; i < number; i++) {
             hoverMouseAboveElement(driver, foundedItems.get(i));
             selectedFor.add(getElementValue(foundedItems.get(i)));

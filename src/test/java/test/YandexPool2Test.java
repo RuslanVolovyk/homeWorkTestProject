@@ -24,19 +24,20 @@ public class YandexPool2Test extends BaseTest {
     }
 
     @Description("Yandex Market - adding to comparison 2 items")
+    @Parameters({"searchedItem", "numberItemsForComparison"})
     @Test
     @TmsLink("8")
-    public void addingToComparison() {
-        int numberItemsForComparison = 3;
-        String searchedItem = "Note 8";
+    public void addingToComparison(String searchedItem, int numberItemsForComparison) {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
+        String description = "Смарт";
 
         yandexMainPage.clickOnMarketLink();
         yandexMainPage.switchToTheMarketTab();
         yandexMarketPage.putWordInSearchField(searchedItem);
         yandexMarketPage.clickOnSubmitButton();
-        ArrayList<String> expectedItems = yandexMarketPage.getListItemsForComparison(numberItemsForComparison);
+        ArrayList<String> expectedItems = yandexMarketPage.getListItemsForComparison(numberItemsForComparison,
+                description);
         yandexMarketPage.clickOnCompareButton();
         ArrayList<String> actualItems = yandexMarketPage.getListComparedItems(numberItemsForComparison);
         yandexMarketPage.checkComparedItems(expectedItems, actualItems);

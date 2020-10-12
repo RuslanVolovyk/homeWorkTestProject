@@ -46,7 +46,8 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @FindBy(xpath = "//a[@data-id='more']")
     WebElement moreLink;
 
-    @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]/div[@class='services-new__item-title']")
+    @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]" +
+            "/div[@class='services-new__item-title']")
     List<WebElement> moreList;
 
     @FindBy(xpath = "//div[contains(text(),'Лондон')]")
@@ -159,6 +160,6 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
 
     @Step("switch to the market tab")
     public void switchToTheMarketTab() {
-       switchToTheLastTab(driver);
+        switchToTheLastTab(driver);
     }
 }
