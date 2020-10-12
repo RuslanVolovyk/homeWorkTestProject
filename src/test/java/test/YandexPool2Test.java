@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 import pages.YandexMainPage;
 import pages.YandexMarketPage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static data.YandexConstants.BASE_URL;
 
@@ -26,8 +26,8 @@ public class YandexPool2Test extends BaseTest {
     @DataProvider(name = "forComparison")
     public Object[][] createData() {
         return new Object[][]{
-                {"Note 8", new Integer((3))},
-                {"Note 9", new Integer((2))}
+                {"Note 8", (3)},
+                {"Note 9", (2)}
         };
     }
 
@@ -43,10 +43,33 @@ public class YandexPool2Test extends BaseTest {
         yandexMainPage.switchToTheMarketTab();
         yandexMarketPage.putWordInSearchField(searchedItem);
         yandexMarketPage.clickOnSubmitButton();
-        ArrayList<String> expectedItems = yandexMarketPage.getListItemsForComparison(numberItemsForComparison,
+        List<String> expectedItems = yandexMarketPage.getListItemsForComparison(numberItemsForComparison,
                 description);
         yandexMarketPage.clickOnCompareButton();
-        ArrayList<String> actualItems = yandexMarketPage.getListComparedItems(numberItemsForComparison);
+        List<String> actualItems = yandexMarketPage.getListComparedItems(numberItemsForComparison);
         yandexMarketPage.checkComparedItems(expectedItems, actualItems);
+    }
+
+    @Description("Yandex Market - deleting selected items")
+    @Test
+    @TmsLink("9")
+    public void deleteFromComparison() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
+        String description = "Смарт";
+        String searchedItem = "Note 8";
+        int numberItemsForComparison = 2;
+
+        yandexMainPage.clickOnMarketLink();
+        yandexMainPage.switchToTheMarketTab();
+        yandexMarketPage.putWordInSearchField(searchedItem);
+        yandexMarketPage.clickOnSubmitButton();
+        List<String> expectedItems = yandexMarketPage.getListItemsForComparison(numberItemsForComparison,
+                description);
+        yandexMarketPage.clickOnCompareButton();
+        List<String> actualItems = yandexMarketPage.getListComparedItems(numberItemsForComparison);
+        yandexMarketPage.checkComparedItems(expectedItems, actualItems);
+        yandexMarketPage.deleteFromComparison();
+        yandexMarketPage.checkIfRemoved(actualItems);
     }
 }
