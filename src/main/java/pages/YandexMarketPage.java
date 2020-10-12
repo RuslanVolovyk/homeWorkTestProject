@@ -117,7 +117,8 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
         SoftAssert verySoftAssert = new SoftAssert();
         verySoftAssert.assertTrue(nothingToCompareWarning.isDisplayed() && getElementValue(nothingToCompareWarning).
                 matches("Сравнивать пока нечего"), "the compared list is not empty");
-        verySoftAssert.assertFalse(itemsArePresent(driver, listString));
+        verySoftAssert.assertFalse(itemsArePresent(driver, listString), "some selected before is still present" +
+                " on the page");
         verySoftAssert.assertAll();
     }
 }
