@@ -42,7 +42,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     WebElement deleteButton;
 
     @FindBy(className = "_2szVRO2K75")
-    WebElement nothingToCompare;
+    WebElement nothingToCompareWarning;
 
     public List<WebElement> foundedItems(String description) {
         return driver.findElements(By.xpath("//a[contains(@href, '/product') and contains(@title,'" + description +
@@ -62,7 +62,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
         return flag;
     }
 
-    @Step("put Note 8 into the search field")
+    @Step("put some data into the search field")
     public void putWordInSearchField(String searchText) {
         putTextIntoField(searchField, searchText);
     }
@@ -103,7 +103,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @Step("compare  if compared items are the same, as selected")
     public void checkComparedItems(List<String> selected, List<String> compared) {
-        Assert.assertTrue((selected.containsAll(compared) & compared.containsAll(selected) & selected.size() ==
+        Assert.assertTrue((selected.containsAll(compared) && compared.containsAll(selected) && selected.size() ==
                 compared.size()), "some items are different");
     }
 
@@ -115,7 +115,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @Step("check if the items are removed from comparison")
     public void checkIfRemoved(List<String> listString) {
         SoftAssert verySoftAssert = new SoftAssert();
-        verySoftAssert.assertTrue(nothingToCompare.isDisplayed() & getElementValue(nothingToCompare).
+        verySoftAssert.assertTrue(nothingToCompareWarning.isDisplayed() && getElementValue(nothingToCompareWarning).
                 matches("Сравнивать пока нечего"), "the compared list is not empty");
         verySoftAssert.assertFalse(itemsArePresent(driver, listString));
         verySoftAssert.assertAll();
