@@ -4,19 +4,15 @@ import core.ActionByActions;
 import core.ClickOn;
 import core.Helper;
 import io.qameta.allure.Step;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.ArrayList;
-
-import java.util.Collections;
 import java.util.List;
 
 public class YandexMarketPage extends PageObjectCreator implements ClickOn, ActionByActions, Helper {
@@ -64,7 +60,6 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
             selectedFor.add(getElementValue(foundedItems.get(i)));
             clickOnMouse(foundedComparisonButtons);
         }
-        Collections.sort(selectedFor);
         return selectedFor;
     }
 
@@ -82,12 +77,12 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
                 until(ExpectedConditions.visibilityOfAllElements(comparedItems));
         for (int i = 0; i < number; i++)
             justCompared.add(getElementValue(comparedItems.get(i)));
-        Collections.sort(justCompared);
         return justCompared;
     }
 
     @Step("compare  if compared items are the same, as selected")
     public void checkComparedItems(ArrayList<String> selected, ArrayList<String> compared) {
-        Assert.assertEquals(selected, compared, "some items are different");
+        Assert.assertTrue((selected.containsAll(compared) & compared.containsAll(selected) & selected.size() ==
+                compared.size()), "some items are different");
     }
 }

@@ -23,9 +23,16 @@ public class YandexPool2Test extends BaseTest {
         tearDown();
     }
 
+    @DataProvider(name = "forComparison")
+    public Object[][] createData() {
+        return new Object[][]{
+                {"Note 8", new Integer((3))},
+                {"Note 9", new Integer((2))}
+        };
+    }
+
     @Description("Yandex Market - adding to comparison 2 items")
-    @Parameters({"searchedItem", "numberItemsForComparison"})
-    @Test
+    @Test(dataProvider = "forComparison")
     @TmsLink("8")
     public void addingToComparison(String searchedItem, int numberItemsForComparison) {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);

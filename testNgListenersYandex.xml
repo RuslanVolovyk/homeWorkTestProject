@@ -4,10 +4,6 @@
     <listeners>
         <listener class-name="core.ListenerITest"/>
     </listeners>
-
-    <parameter name="searchedItem" value="Note 8"/>
-    <parameter name="numberItemsForComparison" value="3"/>
-
     <test name="Yandex.by tests">
         <classes>
             <class name="test.YandexPool2Test">
