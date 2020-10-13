@@ -1,6 +1,7 @@
 package pages;
 
 import core.ClickOn;
+import core.Helper;
 import core.JsActions;
 import data.NavigationLinksUrlsYandex;
 import io.qameta.allure.Step;
@@ -18,11 +19,14 @@ import org.testng.asserts.SoftAssert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions {
+public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions, Helper {
 
     public YandexMainPage(WebDriver driver) {
         super(driver);
     }
+
+    @FindBy(xpath = "//a[@data-id ='market']")
+    WebElement marketLink;
 
     @FindBy(className = "b-langs")
     WebElement langButton;
@@ -42,7 +46,8 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @FindBy(xpath = "//a[@data-id='more']")
     WebElement moreLink;
 
-    @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]/div[@class='services-new__item-title']")
+    @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]" +
+            "/div[@class='services-new__item-title']")
     List<WebElement> moreList;
 
     @FindBy(xpath = "//div[contains(text(),'Лондон')]")
@@ -146,5 +151,15 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @Step("check the more lists of London and Paris")
     public void checkLists(String location1, String location2) {
         Assert.assertEquals(location1, location2, "The more lists are not equal!");
+    }
+
+    @Step("click on the market link")
+    public void clickOnMarketLink() {
+        clickOnMouse(marketLink);
+    }
+
+    @Step("switch to the market tab")
+    public void switchToTheMarketTab() {
+        switchToTheLastTab(driver);
     }
 }

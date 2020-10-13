@@ -4,16 +4,16 @@
     <listeners>
         <listener class-name="core.ListenerITest"/>
     </listeners>
-
-    <test name="Yandex1">
+    <test name="Yandex.by tests">
         <classes>
-            <class name="test.YandexPostTest">
-                <methods>
-                    <include name="logInAndOutPostAccount"/>
-                </methods>
+            <class name="test.YandexPool2Test">
+                <!--            <class name="test.YandexPool1Test">-->
+                <!--                <methods>-->
+                <!--                    <include name="logInAndOutPostAccount"/>-->
+                <!--                </methods>-->
             </class>
-            <class name="test.GoToBBSSiteTest"/>
-            <class name="test.UkrNetLogInPositiveTest"/>
+            <!--            <class name="test.GoToBBSSiteTest"/>-->
+            <!--            <class name="test.UkrNetLogInPositiveTest"/>-->
         </classes>
     </test>
 </suite>

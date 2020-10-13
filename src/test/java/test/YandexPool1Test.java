@@ -12,7 +12,7 @@ import pages.YandexMainPage;
 
 import static data.YandexConstants.BASE_URL;
 
-public class YandexPostTest extends BaseTest {
+public class YandexPool1Test extends BaseTest {
 
     @BeforeMethod
     public void openSite() {
@@ -33,7 +33,7 @@ public class YandexPostTest extends BaseTest {
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
 
         yandexMainPage.clickLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToNewTab();
+        yandexAuthorizationsPage.switchToTheLastTab();
         yandexAuthorizationsPage.putLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.putPassword();
@@ -50,7 +50,7 @@ public class YandexPostTest extends BaseTest {
         YandexMailPage yandexMailPage = new YandexMailPage(driver);
 
         yandexMainPage.clickLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToNewTab();
+        yandexAuthorizationsPage.switchToTheLastTab();
         yandexAuthorizationsPage.putLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.putPassword();
@@ -69,7 +69,7 @@ public class YandexPostTest extends BaseTest {
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
 
         yandexMainPage.clickLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToNewTab();
+        yandexAuthorizationsPage.switchToTheLastTab();
         yandexAuthorizationsPage.putLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.putWrongPassword();
@@ -85,7 +85,7 @@ public class YandexPostTest extends BaseTest {
         YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
 
         yandexMainPage.clickLinkToPostByMouse();
-        yandexAuthorizationsPage.switchToNewTab();
+        yandexAuthorizationsPage.switchToTheLastTab();
         yandexAuthorizationsPage.putWrongLogin();
         yandexAuthorizationsPage.leftMouseClickOnButtonIn();
         yandexAuthorizationsPage.checkWrongAccountMessage();

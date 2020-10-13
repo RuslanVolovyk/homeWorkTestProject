@@ -12,6 +12,7 @@ import org.testng.Assert;
 import static data.UkrNetConstans.*;
 
 public class UkrNetMainPage extends PageObjectCreator implements ClickOn {
+
     public UkrNetMainPage(WebDriver driver) {
         super(driver);
     }
