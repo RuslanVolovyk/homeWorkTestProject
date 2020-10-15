@@ -72,4 +72,21 @@ public class YandexPool2Test extends BaseTest {
         yandexMarketPage.deleteFromComparison();
         yandexMarketPage.checkIfRemoved(actualItems);
     }
+
+    @Description("Yandex Market - sorting by price  dawn")
+    @Test(invocationCount = 5)
+    @TmsLink("10")
+    public void sortingByPrice() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
+
+        yandexMainPage.clickOnMarketLink();
+        yandexMainPage.switchToTheMarketTab();
+        yandexMarketPage.clickOnElectronicLink();
+        yandexMarketPage.clickOnActionsCameras();
+        yandexMarketPage.clickOnActionsCameras();
+        yandexMarketPage.clickOnSortByPrice();
+        yandexMarketPage.clickOnSortByPrice();
+        yandexMarketPage.checkSortingOfItems();
+    }
 }

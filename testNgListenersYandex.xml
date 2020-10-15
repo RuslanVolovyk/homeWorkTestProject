@@ -7,6 +7,9 @@
     <test name="Yandex.by tests">
         <classes>
             <class name="test.YandexPool2Test">
+                <methods>
+                    <include name="sortingByPrice"/>
+                </methods>
                 <!--            <class name="test.YandexPool1Test">-->
                 <!--                <methods>-->
                 <!--                    <include name="logInAndOutPostAccount"/>-->

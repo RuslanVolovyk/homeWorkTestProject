@@ -4,16 +4,13 @@ import core.ActionByActions;
 import core.ClickOn;
 import core.Helper;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +41,21 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @FindBy(className = "_2szVRO2K75")
     WebElement nothingToCompareWarning;
 
+    @FindBy(xpath = "//span[text() ='Электроника']")
+    WebElement electronicLink;
+
+    @FindBy(xpath = "//a[text()='Экшн-камеры']")
+    WebElement actionCamerasLink;
+
+    @FindBy(xpath = "//button[text()='по цене']")
+    WebElement sortByPriceLink;
+
+    @FindBy(xpath = "//h3[@class]/a")
+    List<WebElement> itemLinks;
+
+    @FindBy(xpath = "//a[@target='_blank']//span[@data-autotest-currency]/span[1]")
+    List<WebElement> priceOfItem;
+
     public List<WebElement> foundedItems(String description) {
         return driver.findElements(By.xpath("//a[contains(@href, '/product') and contains(@title,'" + description +
                 "')]"));
@@ -58,6 +70,15 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
             } catch (NoSuchElementException e) {
                 flag = false;
             }
+        }
+        return flag;
+    }
+
+    public boolean numberSortedDawn(List<Integer> intList) {
+        boolean flag = false;
+        for (int i = 1; i < intList.size(); i++) {
+            if (intList.get(i) <= intList.get(i - 1))
+                flag = true;
         }
         return flag;
     }
@@ -103,8 +124,8 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @Step("compare  if compared items are the same, as selected")
     public void checkComparedItems(List<String> selected, List<String> compared) {
-        Assert.assertTrue((selected.containsAll(compared) && compared.containsAll(selected) && selected.size() ==
-                compared.size()), "some items are different");
+        Assert.assertTrue((selected.containsAll(compared) && compared.containsAll(selected)
+                && selected.size() == compared.size()), "some items are different");
     }
 
     @Step("delete selected items from comparison")
@@ -120,5 +141,51 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
         verySoftAssert.assertFalse(itemsArePresent(driver, listString), "some selected before is still present" +
                 " on the page");
         verySoftAssert.assertAll();
+    }
+
+    @Step("click on the electronic link")
+    public void clickOnElectronicLink() {
+        boolean flag;
+        do try {
+            clickOnMouse(electronicLink);
+            flag = false;
+        } catch (ElementClickInterceptedException e) {
+            flag = true;
+        }
+        while (flag);
+    }
+
+    @Step("click on the actions cameras")
+    public void clickOnActionsCameras() {
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(StaleElementReferenceException.class);
+        wait.until(driver -> new WebDriverWait(driver, 10).
+                withMessage("action cameras link is not clickable").
+                until(ExpectedConditions.elementToBeClickable(actionCamerasLink)));
+        clickOnMouse(actionCamerasLink);
+    }
+
+    @Step("click on the sort by price link")
+    public void clickOnSortByPrice() {
+        clickOnMouse(sortByPriceLink);
+    }
+
+    @Step("check sorting of items")
+    public void checkSortingOfItems() {
+        List<Integer> priceList = new ArrayList<>();
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(StaleElementReferenceException.class);
+
+        wait.until(driver -> new WebDriverWait(driver, 5).
+                withMessage("items are not visible").
+                until(ExpectedConditions.visibilityOfAllElements(itemLinks)));
+        for (WebElement priceElement : priceOfItem) {
+            priceList.add(Integer.valueOf(getElementValue(priceElement).replace(" ", "")));
+        }
+        Assert.assertTrue(numberSortedDawn(priceList), "wrong sorting order");
     }
 }
