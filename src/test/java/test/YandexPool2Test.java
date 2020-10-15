@@ -74,7 +74,7 @@ public class YandexPool2Test extends BaseTest {
     }
 
     @Description("Yandex Market - sorting by price  dawn")
-    @Test(invocationCount = 5)
+    @Test(invocationCount = 1)
     @TmsLink("10")
     public void sortingByPrice() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
@@ -88,5 +88,21 @@ public class YandexPool2Test extends BaseTest {
         yandexMarketPage.clickOnSortByPrice();
         yandexMarketPage.clickOnSortByPrice();
         yandexMarketPage.checkSortingOfItems();
+    }
+
+    @Description("Yandex Market - sorting by a tag")
+    @Test(invocationCount = 1)
+    @TmsLink("11")
+    public void sortingByTag() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
+        int widthLimit = 50;
+
+        yandexMainPage.clickOnMarketLink();
+        yandexMainPage.switchToTheMarketTab();
+        yandexMarketPage.clickOnHomeAppliancesLink();
+        yandexMarketPage.clickOnFridgesLink();
+        yandexMarketPage.selectWidthTo50(widthLimit);
+        yandexMarketPage.checkFridgesWidth(widthLimit);
     }
 }

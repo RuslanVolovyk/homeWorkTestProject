@@ -44,8 +44,17 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @FindBy(xpath = "//span[text() ='Электроника']")
     WebElement electronicLink;
 
+    @FindBy(xpath = "//span[text() ='Бытовая техника']")
+    WebElement homeAppliancesLink;
+
     @FindBy(xpath = "//a[text()='Экшн-камеры']")
     WebElement actionCamerasLink;
+
+    @FindBy(xpath = "//a[text()='Холодильники']")
+    WebElement fridgesLink;
+
+    @FindBy(xpath = "//input[@name='Ширина до']")
+    WebElement widthInputField;
 
     @FindBy(xpath = "//button[text()='по цене']")
     WebElement sortByPriceLink;
@@ -55,6 +64,9 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @FindBy(xpath = "//a[@target='_blank']//span[@data-autotest-currency]/span[1]")
     List<WebElement> priceOfItem;
+
+    @FindBy(xpath = "//li[contains(text(),'ШхВхГ')]")
+    List<WebElement> fridgeSize;
 
     public List<WebElement> foundedItems(String description) {
         return driver.findElements(By.xpath("//a[contains(@href, '/product') and contains(@title,'" + description +
@@ -77,8 +89,9 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     public boolean numberSortedDawn(List<Integer> intList) {
         boolean flag = false;
         for (int i = 1; i < intList.size(); i++) {
-            if (intList.get(i) <= intList.get(i - 1))
+            if (intList.get(i) <= intList.get(i - 1)) {
                 flag = true;
+            }
         }
         return flag;
     }
@@ -155,6 +168,29 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
         while (flag);
     }
 
+    @Step("click on the home appliances link")
+    public void clickOnHomeAppliancesLink() {
+        clickOnMouse(homeAppliancesLink);
+    }
+
+    @Step("click on the fridges link")
+    public void clickOnFridgesLink() {
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(StaleElementReferenceException.class);
+        wait.until(driver -> new WebDriverWait(driver, 10).
+                withMessage("fridges link is not clickable").
+                until(ExpectedConditions.elementToBeClickable(fridgesLink)));
+        clickOnMouse(fridgesLink);
+    }
+
+    @Step("select width to 50 cm ")
+    public void selectWidthTo50(int width) {
+        clickOnMouse(widthInputField);
+        putTextIntoField(widthInputField, String.valueOf(width));
+    }
+
     @Step("click on the actions cameras")
     public void clickOnActionsCameras() {
         Wait<WebDriver> wait = new FluentWait<>(driver)
@@ -187,5 +223,21 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
             priceList.add(Integer.valueOf(getElementValue(priceElement).replace(" ", "")));
         }
         Assert.assertTrue(numberSortedDawn(priceList), "wrong sorting order");
+    }
+
+    @Step("check if fridges width does not exceed 50 cm")
+    public void checkFridgesWidth(int width) {
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(StaleElementReferenceException.class);
+
+        wait.until(driver -> new WebDriverWait(driver, 5).
+                withMessage("width is not visible").
+                until(ExpectedConditions.visibilityOfAllElements(fridgeSize)));
+
+        for (WebElement element : fridgeSize)
+            Assert.assertTrue(Integer.valueOf(getElementValue(element).substring(7, 9)) <= width,
+                    "fridge width is large 50 cm");
     }
 }
