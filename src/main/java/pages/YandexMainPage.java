@@ -46,6 +46,9 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @FindBy(xpath = "//a[@data-id='more']")
     WebElement moreLink;
 
+    @FindBy(xpath = "//a[@data-id ='music']")
+    WebElement musicLink;
+
     @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]" +
             "/div[@class='services-new__item-title']")
     List<WebElement> moreList;
@@ -111,6 +114,11 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @Step("clicking on geolink")
     public void clickOnGeolink() {
         clickOnMouse(geolinkSwitch);
+    }
+
+    @Step("clicking on the music link")
+    public void clickOnMusic() {
+        clickOnMouse(musicLink);
     }
 
     @Step("put London into the location field")

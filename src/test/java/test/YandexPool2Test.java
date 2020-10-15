@@ -6,6 +6,7 @@ import org.testng.annotations.*;
 
 import pages.YandexMainPage;
 import pages.YandexMarketPage;
+import pages.YandexMusicPage;
 
 import java.util.List;
 
@@ -104,5 +105,23 @@ public class YandexPool2Test extends BaseTest {
         yandexMarketPage.clickOnFridgesLink();
         yandexMarketPage.selectWidthTo50(widthLimit);
         yandexMarketPage.checkFridgesWidth(widthLimit);
+    }
+
+    @Description("Yandex mMusic - finding an artist")
+    @Test(invocationCount = 10)
+    @TmsLink("12")
+    public void findingMusic() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexMusicPage yandexMusicPage = new YandexMusicPage(driver);
+        String searchWord = "Metal";
+        String artist = "Metallica";
+
+        yandexMainPage.clickOnMusic();
+        yandexMusicPage.switchToTheMusicTab();
+        yandexMusicPage.closeAd();
+        yandexMusicPage.makeSearch(searchWord);
+        yandexMusicPage.chooseArtist(artist);
+        yandexMusicPage.checkArtistTitle(artist);
+        yandexMusicPage.checkArtisOfPopularAlbums(artist);
     }
 }

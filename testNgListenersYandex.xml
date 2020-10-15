@@ -7,10 +7,11 @@
     <test name="Yandex.by tests">
         <classes>
             <class name="test.YandexPool2Test">
-<!--                <methods>-->
+                <methods>
+                <include name="findingMusic"/>
 <!--                    <include name="sortingByPrice"/>-->
 <!--                    <include name="sortingByTag"/>-->
-<!--                </methods>-->
+                </methods>
                 <!--            <class name="test.YandexPool1Test">-->
                 <!--                <methods>-->
                 <!--                    <include name="logInAndOutPostAccount"/>-->
