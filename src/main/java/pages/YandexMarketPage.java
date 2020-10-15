@@ -89,9 +89,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     public boolean numberSortedDawn(List<Integer> intList) {
         boolean flag = false;
         for (int i = 1; i < intList.size(); i++) {
-            if (intList.get(i) <= intList.get(i - 1)) {
-                flag = true;
-            }
+            flag = intList.get(i) <= intList.get(i - 1);
         }
         return flag;
     }
@@ -197,6 +195,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(StaleElementReferenceException.class);
+
         wait.until(driver -> new WebDriverWait(driver, 10).
                 withMessage("action cameras link is not clickable").
                 until(ExpectedConditions.elementToBeClickable(actionCamerasLink)));
@@ -213,10 +212,10 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
         List<Integer> priceList = new ArrayList<>();
         Wait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(StaleElementReferenceException.class);
 
-        wait.until(driver -> new WebDriverWait(driver, 5).
+        wait.until(driver -> new WebDriverWait(driver, 10).
                 withMessage("items are not visible").
                 until(ExpectedConditions.visibilityOfAllElements(itemLinks)));
         for (WebElement priceElement : priceOfItem) {
@@ -237,7 +236,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
                 until(ExpectedConditions.visibilityOfAllElements(fridgeSize)));
 
         for (WebElement element : fridgeSize)
-            Assert.assertTrue(Integer.valueOf(getElementValue(element).substring(7, 9)) <= width,
+            Assert.assertTrue(Integer.parseInt(getElementValue(element).substring(7, 9)) <= width,
                     "fridge width is large 50 cm");
     }
 }
