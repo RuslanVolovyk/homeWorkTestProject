@@ -8,9 +8,9 @@
         <classes>
             <class name="test.YandexPool2Test">
                 <methods>
-                <include name="findingMusic"/>
-<!--                    <include name="sortingByPrice"/>-->
-<!--                    <include name="sortingByTag"/>-->
+                    <!--                <include name="findingMusic"/>-->
+                    <include name="sortingByPrice"/>
+                    <!--                    <include name="sortingByTag"/>-->
                 </methods>
                 <!--            <class name="test.YandexPool1Test">-->
                 <!--                <methods>-->

@@ -59,9 +59,6 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @FindBy(xpath = "//button[text()='по цене']")
     WebElement sortByPriceLink;
 
-    @FindBy(xpath = "//h3[@class]/a")
-    List<WebElement> itemLinks;
-
     @FindBy(xpath = "//a[@target='_blank']//span[@data-autotest-currency]/span[1]")
     List<WebElement> priceOfItem;
 
@@ -191,34 +188,31 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @Step("click on the actions cameras")
     public void clickOnActionsCameras() {
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(5))
-                .ignoring(StaleElementReferenceException.class);
-
-        wait.until(driver -> new WebDriverWait(driver, 10).
-                withMessage("action cameras link is not clickable").
-                until(ExpectedConditions.elementToBeClickable(actionCamerasLink)));
+        new WebDriverWait(driver, 10).
+                withMessage("action cameras link is not present").until(ExpectedConditions.
+                presenceOfAllElementsLocatedBy(By.partialLinkText("Экшн-камеры")));
+        driver.navigate().refresh();
         clickOnMouse(actionCamerasLink);
     }
 
     @Step("click on the sort by price link")
     public void clickOnSortByPrice() {
         clickOnMouse(sortByPriceLink);
+        driver.navigate().refresh();
     }
 
     @Step("check sorting of items")
     public void checkSortingOfItems() {
         List<Integer> priceList = new ArrayList<>();
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(StaleElementReferenceException.class);
+        driver.navigate().refresh();
 
-        wait.until(driver -> new WebDriverWait(driver, 10).
-                withMessage("items are not visible").
-                until(ExpectedConditions.visibilityOfAllElements(itemLinks)));
+        new WebDriverWait(driver, 15).
+                withMessage("items are not visible").until(ExpectedConditions.visibilityOfAllElements(priceOfItem));
+        driver.navigate().refresh();
         for (WebElement priceElement : priceOfItem) {
+            new WebDriverWait(driver, 10).
+                    withMessage("price is not clickable").
+                    until(ExpectedConditions.elementToBeClickable(priceElement));
             priceList.add(Integer.valueOf(getElementValue(priceElement).replace(" ", "")));
         }
         Assert.assertTrue(numberSortedDawn(priceList), "wrong sorting order");
@@ -230,11 +224,9 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(StaleElementReferenceException.class);
-
         wait.until(driver -> new WebDriverWait(driver, 5).
                 withMessage("width is not visible").
                 until(ExpectedConditions.visibilityOfAllElements(fridgeSize)));
-
         for (WebElement element : fridgeSize)
             Assert.assertTrue(Integer.parseInt(getElementValue(element).substring(7, 9)) <= width,
                     "fridge width is large 50 cm");

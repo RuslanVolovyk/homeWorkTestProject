@@ -106,7 +106,7 @@ public class YandexPool2Test extends BaseTest {
     }
 
     @Description("Yandex mMusic - finding an artist")
-    @Test(invocationCount = 10)
+    @Test(invocationCount = 1)
     @TmsLink("12")
     public void findingMusic() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
