@@ -34,6 +34,19 @@ public class YandexMusicPage extends PageObjectCreator implements ClickOn, JsAct
     @FindBy(xpath = "//div[@class='d-generic-page-head__main-top']/h1")
     WebElement actualArtistTitle;
 
+    public void retryingFindText(WebElement element) {
+        int attempts = 0;
+
+        while (attempts < 3) {
+            try {
+                getElementValue(element);
+                break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+    }
+
     @Step("switch to the music tab")
     public void switchToTheMusicTab() {
         switchToTheLastTab(driver);
@@ -56,6 +69,7 @@ public class YandexMusicPage extends PageObjectCreator implements ClickOn, JsAct
     public void chooseArtist(String requiredArtist) {
         if (foundArtists.size() != 0) {
             for (WebElement element : foundArtists) {
+                retryingFindText(element);
                 if (getElementValue(element).contains(requiredArtist)) {
                     new WebDriverWait(driver, 10).withMessage("not present artist ").
                             until(ExpectedConditions.elementToBeClickable(element));

@@ -19,8 +19,6 @@ import org.testng.asserts.SoftAssert;
 import java.util.ArrayList;
 import java.util.List;
 
-import static data.YandexConstants.BASE_URL;
-
 public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions, Helper {
 
     public YandexMainPage(WebDriver driver) {

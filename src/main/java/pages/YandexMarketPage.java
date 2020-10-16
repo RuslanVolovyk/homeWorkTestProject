@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @FindBy(xpath = "//button[text()='Удалить список']")
     WebElement deleteButton;
 
-    @FindBy(className = "_2szVRO2K75")
+    @FindBy(xpath = "//h2[contains(text(), 'Сравнивать пока нечего')]")
     WebElement nothingToCompareWarning;
 
     @FindBy(xpath = "//span[text() ='Электроника']")
@@ -50,7 +49,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @FindBy(xpath = "//a[text()='Экшн-камеры']")
     WebElement actionCamerasLink;
 
-    @FindBy(xpath = "//a[text()='Холодильники']")
+    @FindBy(xpath = "//div[contains(@data-zone-data,'catalog--k')]//a[text()='Холодильники']")
     WebElement fridgesLink;
 
     @FindBy(xpath = "//input[@name='Ширина до']")
@@ -64,6 +63,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @FindBy(xpath = "//li[contains(text(),'ШхВхГ')]")
     List<WebElement> fridgeSize;
+
 
     public List<WebElement> foundedItems(String description) {
         return driver.findElements(By.xpath("//a[contains(@href, '/product') and contains(@title,'" + description +
@@ -144,6 +144,7 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @Step("check if the items are removed from comparison")
     public void checkIfRemoved(List<String> listString) {
         SoftAssert verySoftAssert = new SoftAssert();
+
         verySoftAssert.assertTrue(nothingToCompareWarning.isDisplayed() && getElementValue(nothingToCompareWarning).
                 matches("Сравнивать пока нечего"), "the compared list is not empty");
         verySoftAssert.assertFalse(itemsArePresent(driver, listString), "some selected before is still present" +
@@ -170,20 +171,24 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @Step("click on the fridges link")
     public void clickOnFridgesLink() {
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(5))
-                .ignoring(StaleElementReferenceException.class);
-        wait.until(driver -> new WebDriverWait(driver, 10).
-                withMessage("fridges link is not clickable").
-                until(ExpectedConditions.elementToBeClickable(fridgesLink)));
-        clickOnMouse(fridgesLink);
+        int i = 0;
+
+        do {
+            try {
+                clickOnMouse(fridgesLink);
+                break;
+            } catch (StaleElementReferenceException e) {
+            }
+            i++;
+        }
+        while (i < 5);
     }
 
     @Step("select width to 50 cm ")
     public void selectWidthTo50(int width) {
         clickOnMouse(widthInputField);
         putTextIntoField(widthInputField, String.valueOf(width));
+        driver.navigate().refresh();
     }
 
     @Step("click on the actions cameras")
@@ -204,8 +209,8 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
     @Step("check sorting of items")
     public void checkSortingOfItems() {
         List<Integer> priceList = new ArrayList<>();
-        driver.navigate().refresh();
 
+        driver.navigate().refresh();
         new WebDriverWait(driver, 15).
                 withMessage("items are not visible").until(ExpectedConditions.visibilityOfAllElements(priceOfItem));
         driver.navigate().refresh();
@@ -220,13 +225,9 @@ public class YandexMarketPage extends PageObjectCreator implements ClickOn, Acti
 
     @Step("check if fridges width does not exceed 50 cm")
     public void checkFridgesWidth(int width) {
-        Wait<WebDriver> wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofSeconds(5))
-                .ignoring(StaleElementReferenceException.class);
-        wait.until(driver -> new WebDriverWait(driver, 5).
-                withMessage("width is not visible").
-                until(ExpectedConditions.visibilityOfAllElements(fridgeSize)));
+        new WebDriverWait(driver, 15).
+                withMessage("fridges link is not clickable").
+                until(ExpectedConditions.visibilityOfAllElements(fridgeSize));
         for (WebElement element : fridgeSize)
             Assert.assertTrue(Integer.parseInt(getElementValue(element).substring(7, 9)) <= width,
                     "fridge width is large 50 cm");
