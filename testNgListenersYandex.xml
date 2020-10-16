@@ -1,4 +1,4 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite Yandex.by with listeners" verbose="1">
     <listeners>
@@ -7,6 +7,11 @@
     <test name="Yandex.by tests">
         <classes>
             <class name="test.YandexPool2Test">
+                <!--                <methods>-->
+                <!--               <include name="findingMusic"/>-->
+                <!--               <include name="sortingByPrice"/>-->
+                <!--                    <include name="sortingByTag"/>-->
+                <!--                </methods>-->
                 <!--            <class name="test.YandexPool1Test">-->
                 <!--                <methods>-->
                 <!--                    <include name="logInAndOutPostAccount"/>-->

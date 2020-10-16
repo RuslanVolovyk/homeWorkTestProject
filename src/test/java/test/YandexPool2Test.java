@@ -4,8 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.*;
 
-import pages.YandexMainPage;
-import pages.YandexMarketPage;
+import pages.*;
 
 import java.util.List;
 
@@ -71,5 +70,66 @@ public class YandexPool2Test extends BaseTest {
         yandexMarketPage.checkComparedItems(expectedItems, actualItems);
         yandexMarketPage.deleteFromComparison();
         yandexMarketPage.checkIfRemoved(actualItems);
+    }
+
+    @Description("Yandex Market - sorting by price  dawn")
+    @Test(invocationCount = 1)
+    @TmsLink("10")
+    public void sortingByPrice() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
+
+        yandexMainPage.clickOnMarketLink();
+        yandexMainPage.switchToTheMarketTab();
+        yandexMarketPage.clickOnElectronicLink();
+        yandexMarketPage.clickOnActionsCameras();
+        yandexMarketPage.clickOnActionsCameras();
+        yandexMarketPage.clickOnSortByPrice();
+        yandexMarketPage.clickOnSortByPrice();
+        yandexMarketPage.checkSortingOfItems();
+    }
+
+    @Description("Yandex Market - sorting by a tag")
+    @Test(invocationCount = 1)
+    @TmsLink("11")
+    public void sortingByTag() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexMarketPage yandexMarketPage = new YandexMarketPage(driver);
+        int widthLimit = 50;
+
+        yandexMainPage.clickOnMarketLink();
+        yandexMainPage.switchToTheMarketTab();
+        yandexMarketPage.clickOnHomeAppliancesLink();
+        yandexMarketPage.clickOnFridgesLink();
+        yandexMarketPage.selectWidthTo50(widthLimit);
+        yandexMarketPage.checkFridgesWidth(widthLimit);
+    }
+
+    @Description("Yandex mMusic - finding an artist")
+    @Test(invocationCount = 1)
+    @TmsLink("12")
+    public void findingMusic() {
+        YandexMainPage yandexMainPage = new YandexMainPage(driver);
+        YandexMusicPage yandexMusicPage = new YandexMusicPage(driver);
+        YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
+        YandexMailPage yandexMailPage = new YandexMailPage(driver);
+        String searchWord = "Metal";
+        String artist = "Metallica";
+
+        yandexMainPage.clickLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToTheLastTab();
+        yandexAuthorizationsPage.putLogin();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexAuthorizationsPage.putPassword();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexMailPage.checkUserName();
+        yandexMainPage.ReturnToMainTab();
+        yandexMainPage.clickOnMusic();
+        yandexMusicPage.switchToTheMusicTab();
+        yandexMusicPage.closeAd();
+        yandexMusicPage.makeSearch(searchWord);
+        yandexMusicPage.chooseArtist(artist);
+        yandexMusicPage.checkArtistTitle(artist);
+        yandexMusicPage.checkArtisOfPopularAlbums(artist);
     }
 }

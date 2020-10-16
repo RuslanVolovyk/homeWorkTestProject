@@ -46,6 +46,9 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @FindBy(xpath = "//a[@data-id='more']")
     WebElement moreLink;
 
+    @FindBy(xpath = "//a[@data-id ='music']")
+    WebElement musicLink;
+
     @FindBy(xpath = "//div[@class ='services-new__more-popup-content']//a[@data-id and not (@style ='display: none;')]" +
             "/div[@class='services-new__item-title']")
     List<WebElement> moreList;
@@ -113,6 +116,11 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
         clickOnMouse(geolinkSwitch);
     }
 
+    @Step("clicking on the music link")
+    public void clickOnMusic() {
+        clickOnMouse(musicLink);
+    }
+
     @Step("put London into the location field")
     public void putLondon() {
         cityChangeField.clear();
@@ -161,5 +169,13 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @Step("switch to the market tab")
     public void switchToTheMarketTab() {
         switchToTheLastTab(driver);
+    }
+
+    @Step("return to the main page")
+    public void ReturnToMainTab() {
+        ArrayList<String> tabs = new ArrayList<>((driver).getWindowHandles());
+        driver.close();
+        driver.switchTo().window(tabs.get(0));
+        driver.navigate().refresh();
     }
 }

@@ -100,7 +100,7 @@ public class YandexPool1Test extends BaseTest {
         yandexMainPage.checkNewTab();
     }
 
-    @Description("navigation links test")
+    @Description("change the current language test")
     @Test
     @TmsLink("6")
     public void checkSwitchEnglishTest() {
@@ -112,7 +112,7 @@ public class YandexPool1Test extends BaseTest {
         yandexLanguagePage.checkInterfaceLanguage();
     }
 
-    @Description("navigation links test")
+    @Description("geolocation test")
     @Test
     @TmsLink("7")
     public void checkElseContentTest() {
