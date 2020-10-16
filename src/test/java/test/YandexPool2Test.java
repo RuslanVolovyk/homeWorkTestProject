@@ -4,9 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.*;
 
-import pages.YandexMainPage;
-import pages.YandexMarketPage;
-import pages.YandexMusicPage;
+import pages.*;
 
 import java.util.List;
 
@@ -113,9 +111,19 @@ public class YandexPool2Test extends BaseTest {
     public void findingMusic() {
         YandexMainPage yandexMainPage = new YandexMainPage(driver);
         YandexMusicPage yandexMusicPage = new YandexMusicPage(driver);
+        YandexAuthorizationsPage yandexAuthorizationsPage = new YandexAuthorizationsPage(driver);
+        YandexMailPage yandexMailPage = new YandexMailPage(driver);
         String searchWord = "Metal";
         String artist = "Metallica";
 
+        yandexMainPage.clickLinkToPostByMouse();
+        yandexAuthorizationsPage.switchToTheLastTab();
+        yandexAuthorizationsPage.putLogin();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexAuthorizationsPage.putPassword();
+        yandexAuthorizationsPage.leftMouseClickOnButtonIn();
+        yandexMailPage.checkUserName();
+        yandexMainPage.ReturnToMainTab();
         yandexMainPage.clickOnMusic();
         yandexMusicPage.switchToTheMusicTab();
         yandexMusicPage.closeAd();

@@ -19,6 +19,8 @@ import org.testng.asserts.SoftAssert;
 import java.util.ArrayList;
 import java.util.List;
 
+import static data.YandexConstants.BASE_URL;
+
 public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActions, Helper {
 
     public YandexMainPage(WebDriver driver) {
@@ -169,5 +171,13 @@ public class YandexMainPage extends PageObjectCreator implements ClickOn, JsActi
     @Step("switch to the market tab")
     public void switchToTheMarketTab() {
         switchToTheLastTab(driver);
+    }
+
+    @Step("return to the main page")
+    public void ReturnToMainTab() {
+        ArrayList<String> tabs = new ArrayList<>((driver).getWindowHandles());
+        driver.close();
+        driver.switchTo().window(tabs.get(0));
+        driver.navigate().refresh();
     }
 }
